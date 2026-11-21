@@ -972,7 +972,7 @@ body{font-weight:400;color:#3a2e30}
 .j-txt .ui{display:block;margin-bottom:14px;opacity:.85}
 .j-txt .hr-h.big{margin:0 0 22px;color:#fff}
 .pill.light-s{background:#fff;color:var(--ox);border-color:#fff}
-.j-side{display:grid;grid-template-rows:auto 1fr 1fr;gap:clamp(8px,.8vw,12px);min-height:0}
+.j-side{display:grid;grid-template-rows:1fr 1fr;gap:clamp(8px,.8vw,12px);min-height:0}
 .j-top{display:flex;justify-content:space-between;padding:2px 2px 0;color:var(--ox)}
 .j-top span:last-child{color:var(--mute)}
 .j-reel{position:relative;border-radius:var(--r);overflow:hidden;min-height:0;display:block}
