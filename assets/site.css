@@ -782,3 +782,80 @@ details[open]::details-content{block-size:auto}
 .dr-fam a{display:inline-flex;align-items:center;gap:8px;height:36px;padding:0 14px;border:1px solid var(--line);border-radius:30px;color:var(--ox)}
 .dr-fam a i{order:-1;width:10px;height:10px;border-radius:50%}
 @media (min-width:901px) and (max-width:1199px){.nav .r a.fys{display:none}}
+
+/* =====================================================================
+   EDITORIAL THEME — clean white, no boxed panels, more air.
+   Sections run edge to edge on a white page and are divided by hairlines;
+   colour is used once (powder-pink trio band) and wine for type + actions.
+   Everything above stays as the base; this layer overrides it.
+   ===================================================================== */
+:root{
+  --cream:#FFFFFF; --sand:#FFFFFF; --blush:#F6E4E3; --tile:#F8F4F2;
+  --line:rgba(42,18,21,.1); --r:6px;
+  --pad:clamp(22px,6vw,112px); --head:clamp(28px,4vw,64px); --sec:0px;
+}
+body{background:#fff}
+.page{padding:0;gap:0;max-width:none}
+.panel{border-radius:0}
+
+/* announcement + header: full width, flat */
+.ann{margin:0;border-radius:0;padding:10px 16px}
+.sh{top:0;border-radius:0;border-left:0;border-right:0;border-top:0;border-bottom:1px solid var(--line);background:rgba(255,255,255,.92)}
+.mini{background:rgba(255,255,255,.94);box-shadow:0 1px 0 var(--line),0 12px 30px -20px rgba(42,18,21,.4)}
+
+/* hero edge to edge */
+.hero{border-radius:0}
+
+/* trust strip: a quiet ruled line, not a box */
+.trust{border:0;border-bottom:1px solid var(--line);border-radius:0;background:#fff}
+.trust-t{min-height:64px}
+
+/* every section: white, separated by a hairline, generous vertical rhythm */
+.page > section{border-top:1px solid var(--line)}
+.page > section.hero,.page > .trust + section{border-top:0}
+.rail-wrap{padding:clamp(56px,7vw,120px) 0}
+.rail-head{padding:0 var(--pad) var(--head)}
+.rail{padding:0 var(--pad);scroll-padding:0 var(--pad);gap:clamp(12px,1.6vw,24px)}
+.rail.four{gap:clamp(12px,1.6vw,24px)}
+
+/* product cards: soft tile, square corners, no shadow lift */
+.pc,.wall .pc{background:var(--tile);border-radius:var(--r);box-shadow:none!important}
+.pc:hover{transform:none}
+.pc .tag{background:#fff}
+.pc .stage{background:var(--tile)}
+.row .th img,.toast img{mix-blend-mode:multiply}
+
+/* split sections: text on white with real breathing room; images flush */
+.split{min-height:min(84vh,780px)}
+.split .txt{background:#fff;padding:clamp(40px,7vw,128px) var(--pad)}
+.split.blush .txt{background:var(--blush)}
+.split .pic,.split .pic img{border-radius:0}
+
+/* try every shade: flush photo, list on white */
+.try{gap:0;border-top:1px solid var(--line)}
+.try .lipcol{top:0;height:100vh;max-height:none;border-radius:0}
+.list{background:#fff;border-radius:0;padding:clamp(48px,6vw,112px) var(--pad)}
+.row.act{background:linear-gradient(90deg,var(--tile),rgba(248,244,242,0))}
+.row .th{background:var(--tile)}
+
+/* reels, story, faq */
+.reels{padding:clamp(56px,7vw,120px) var(--pad)}
+.reel{border-radius:var(--r)}
+.story{border:0;border-top:1px solid var(--line);padding:clamp(64px,8vw,140px) var(--pad);background:#fff}
+.vals{gap:0;border-top:1px solid var(--line)}
+.vals .box{background:#fff;border-radius:0;padding:clamp(56px,7vw,120px) var(--pad)}
+.vals .pic{border-radius:0}
+
+/* inner pages */
+.box-s,.wall-wrap{background:#fff;border-radius:0}
+.box-c{border-radius:0;border-left:0;border-right:0}
+.box-b,.cta-band{border-radius:0}
+.buy{background:var(--tile);border-radius:var(--r)}
+
+/* footer flush to the edges */
+.foot{border-radius:0}
+
+@media (max-width:900px){
+  .try .lipcol{height:auto;top:0}
+  .split .txt{padding:48px var(--pad)}
+}
