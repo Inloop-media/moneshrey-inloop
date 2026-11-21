@@ -900,3 +900,38 @@ body{font-weight:400;color:#3a2e30}
 .foot .wm{opacity:.6}
 .hero-txt em,.hero-txt i,.vals .lead em,.cap em,.disp em{font-style:normal!important}
 .vals .lead{font-family:var(--ui);font-weight:400;font-size:clamp(22px,2vw,30px);line-height:1.3;letter-spacing:-.02em}
+
+/* =====================================================================
+   HOME HERO · "R" — wordmark first. Nav on white, the Monèshrey logo
+   set huge across the page, then copy on the left and the velvet
+   campaign shot on the right.
+   ===================================================================== */
+.hero.hero-r{display:block;height:auto;min-height:0;max-height:none;aspect-ratio:auto;background:#fff;color:var(--ox);padding:0 clamp(18px,2.8vw,40px) clamp(18px,2.8vw,40px)}
+.hero.hero-r::after{display:none}
+.hero-r .nav{position:relative;color:var(--ox);padding:22px 0}
+.hero-r .nav .logo{visibility:hidden}
+.hero-r .nav .dd>button{color:var(--ox)}
+.vh{position:absolute!important;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.wm-big{margin:clamp(4px,1vw,14px) 0 clamp(16px,2vw,28px);line-height:0;overflow:hidden}
+.wm-img{display:block;width:min(100%,104vh);margin-inline:auto;aspect-ratio:4996/1250;background:var(--ox);-webkit-mask:url(/images/brand/logo-2400.webp) center/contain no-repeat;mask:url(/images/brand/logo-2400.webp) center/contain no-repeat;transform:translateY(102%);transition:transform 1.4s var(--ease)}
+.hero-r.on .wm-img{transform:none}
+.hr-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2.2fr);gap:clamp(14px,1.6vw,24px);height:max(400px,calc(74vh - 178px));height:max(400px,calc(74svh - 178px))}
+.hr-txt{display:flex;flex-direction:column;justify-content:space-between;padding:clamp(4px,1vw,14px) clamp(0px,1vw,14px) 4px 0}
+.hr-h{margin:0;font:400 clamp(26px,2.5vw,40px)/1.1 var(--disp);letter-spacing:-.03em;max-width:420px}
+.hr-txt .sub{margin:0 0 20px;font-size:15px;line-height:1.6;color:#5b4a4c;max-width:340px}
+.hr-txt .ctas{display:flex;gap:10px;flex-wrap:wrap}
+.hr-pic{position:relative;overflow:hidden;border-radius:var(--r);background:#e8c9c3}
+.hr-pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:55% 48%;transform:scale(1.06);transition:transform 2.6s var(--ease)}
+.hero-r.on .hr-pic img{transform:scale(1)}
+.hr-txt>*{opacity:0;transform:translateY(16px);transition:opacity 1s .5s var(--ease),transform 1.1s .5s var(--ease)}
+.hr-txt>:last-child{transition-delay:.7s}
+.hero-r.on .hr-txt>*{opacity:1;transform:none}
+@media (max-width:900px){
+  .hero.hero-r{padding:0 16px 16px}
+  .hero-r .nav{padding:16px 0}
+  .hr-grid{grid-template-columns:1fr;height:auto;min-height:0}
+  .hr-pic{order:-1;aspect-ratio:4/3.4}
+  .hr-txt{gap:22px;padding:6px 0 0}
+  .hr-txt .ctas{flex-direction:row}
+}
+@media (prefers-reduced-motion:reduce){.wm-img,.hr-txt>*,.hr-pic img{transform:none!important;opacity:1!important}}
