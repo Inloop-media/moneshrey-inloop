@@ -97,14 +97,18 @@ button{font:inherit;color:inherit;cursor:pointer;background:none;border:0;paddin
 .hero.on .hero-txt>*{opacity:1;transform:none}
 .hero.on .hero-txt>:nth-child(2){transition-delay:.12s}.hero.on .hero-txt>:nth-child(3){transition-delay:.24s}.hero.on .hero-txt>:nth-child(4){transition-delay:.36s}
 
-/* trust band (brief: trust strip directly under the hero) */
-.trust{background:var(--ox);color:var(--blush);border-radius:var(--r);overflow:hidden;padding:clamp(14px,1.6vw,20px) 0;white-space:nowrap}
-.trust-t{display:flex;width:max-content;animation:mq 70s linear infinite}
-.trust:hover .trust-t{animation-play-state:paused}
-.trust span{font:italic 400 clamp(19px,1.7vw,26px)/1 var(--disp);font-size-adjust:ex-height .44;padding:0 clamp(18px,2vw,30px);display:inline-flex;align-items:center;gap:clamp(18px,2vw,30px)}
-.trust span::after{content:"";width:6px;height:6px;transform:rotate(45deg);background:currentColor;opacity:.55;margin-left:clamp(18px,2vw,30px)}
-.trust span{gap:0}
-@keyframes mq{to{transform:translateX(-50%)}}
+/* trust strip (brief: directly under the hero) — quiet, hairline, static on desktop */
+.trust{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;color:var(--ox);background:var(--cream)}
+.trust-t{display:flex;justify-content:space-between;align-items:center;gap:0;margin:0;padding:0 clamp(18px,3vw,48px);list-style:none;min-height:58px}
+.trust-t li{display:flex;align-items:center;gap:10px;white-space:nowrap;font:400 11.5px/1 var(--ui);text-transform:uppercase;letter-spacing:.18em}
+.trust-t li svg{width:15px;height:15px;flex:none;opacity:.8}
+.trust-t li.dup{display:none}
+@media (max-width:1100px){
+  .trust-t{justify-content:flex-start;width:max-content;padding:0;gap:44px;animation:mq 45s linear infinite}
+  .trust-t li.dup{display:flex}
+  .trust-t li:first-child{margin-left:22px}
+}
+@keyframes mq{to{transform:translateX(calc(-50% - 22px))}}
 
 /* sticky mini header */
 .mini{position:fixed;z-index:60;top:10px;left:50%;transform:translate(-50%,-90px);transition:transform .5s var(--ease);background:rgba(255,250,247,.9);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-radius:40px;padding:8px 8px 8px 22px;display:flex;align-items:center;gap:22px;box-shadow:0 10px 30px -14px rgba(78,20,7,.35);color:var(--ox);white-space:nowrap}
@@ -509,7 +513,7 @@ details[open]::details-content{block-size:auto}
     </div>
   </header>
 
-  <div class="trust" role="note" aria-label="Made for Indian skin, Up to 16-hour wear, Waterproof, Paraben free, Fragrance free, Cruelty free, Soft matte finish"><div class="trust-t" aria-hidden="true"><span>Made for Indian skin</span><span>Up to 16-hour wear</span><span>Waterproof</span><span>Paraben free</span><span>Fragrance free</span><span>Cruelty free</span><span>Soft matte finish</span><span>Made for Indian skin</span><span>Up to 16-hour wear</span><span>Waterproof</span><span>Paraben free</span><span>Fragrance free</span><span>Cruelty free</span><span>Soft matte finish</span></div></div>
+  <div class="trust"><ul class="trust-t" aria-label="Why Monèshrey"><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.1"><path d="M8 1.5v13M1.5 8h13M3.4 3.4l9.2 9.2M12.6 3.4l-9.2 9.2"/></svg>Made for Indian skin</li><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.1"><circle cx="8" cy="8" r="6.3"/><path d="M8 4.3V8l2.6 1.6"/></svg>Up to 16-hour wear</li><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.1"><path d="M8 1.5S3.5 6.6 3.5 9.7a4.5 4.5 0 0 0 9 0C12.5 6.6 8 1.5 8 1.5Z"/></svg>Waterproof</li><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.1"><path d="M2.5 13.5c0-6 4-10 11-11-1 7-5 11-11 11Zm0 0 6-6"/></svg>Paraben &amp; fragrance free</li><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.1"><path d="M8 13.6S2 10 2 5.9A3.2 3.2 0 0 1 8 4.3a3.2 3.2 0 0 1 6 1.6C14 10 8 13.6 8 13.6Z"/></svg>Cruelty free</li><li class="dup" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.1"><path d="M8 1.5v13M1.5 8h13M3.4 3.4l9.2 9.2M12.6 3.4l-9.2 9.2"/></svg>Made for Indian skin</li><li class="dup" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.1"><circle cx="8" cy="8" r="6.3"/><path d="M8 4.3V8l2.6 1.6"/></svg>Up to 16-hour wear</li><li class="dup" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.1"><path d="M8 1.5S3.5 6.6 3.5 9.7a4.5 4.5 0 0 0 9 0C12.5 6.6 8 1.5 8 1.5Z"/></svg>Waterproof</li><li class="dup" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.1"><path d="M2.5 13.5c0-6 4-10 11-11-1 7-5 11-11 11Zm0 0 6-6"/></svg>Paraben &amp; fragrance free</li><li class="dup" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.1"><path d="M8 13.6S2 10 2 5.9A3.2 3.2 0 0 1 8 4.3a3.2 3.2 0 0 1 6 1.6C14 10 8 13.6 8 13.6Z"/></svg>Cruelty free</li></ul></div>
 
   <div class="mini ui" id="mini">
     <button class="mm ui" aria-label="Open menu" aria-controls="drawer" aria-expanded="false">Menu</button>
