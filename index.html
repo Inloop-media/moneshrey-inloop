@@ -29,19 +29,62 @@
 
   <header class="panel hero hero-r" id="hero">
     <nav class="nav ui" data-nav></nav>
-    <h1 class="wm-big"><span class="vh">Monèshrey Beauty — </span><span class="wm-img" role="img" aria-label="Monèshrey Beauty"></span></h1>
-    <div class="hr-grid">
-      <div class="hr-txt">
-        <p class="hr-h">Matte that survives chai, chaos &amp; bad decisions.</p>
-        <div>
-          <p class="sub">Eight soft-matte shades built around Indian undertones. Up to 16-hour wear, from ₹520.</p>
-          <div class="ctas"><a class="pill solid" href="/shop">Shop all shades</a><a class="pill" href="/find-your-shade">Find your shade</a></div>
+    <div class="hs" id="hs" role="region" aria-roledescription="carousel" aria-label="Featured">
+      <div class="slide s-r act" aria-roledescription="slide" aria-label="1 of 4">
+        <h1 class="wm-big"><span class="vh">Monèshrey Beauty — </span><span class="wm-img" role="img" aria-label="Monèshrey Beauty"></span></h1>
+        <div class="hr-grid">
+          <div class="hr-txt">
+            <p class="hr-h">Matte that survives chai, chaos &amp; bad decisions.</p>
+            <div>
+              <p class="sub">Eight soft-matte shades built around Indian undertones. Up to 16-hour wear, from ₹520.</p>
+              <div class="ctas"><a class="pill solid" href="/shop">Shop all shades</a><a class="pill" href="/find-your-shade">Find your shade</a></div>
+            </div>
+          </div>
+          <div class="hr-pic"><img fetchpriority="high" alt="Monèshrey liquid matte lipstick on pink velvet" src="/images/campaign/velvet-1400.webp" srcset="/images/campaign/velvet-800.webp 800w, /images/campaign/velvet-1400.webp 1400w, /images/campaign/velvet-2000.webp 2000w" sizes="(max-width:900px) 100vw, 68vw"></div>
         </div>
       </div>
-      <div class="hr-pic"><img fetchpriority="high" alt="Monèshrey liquid matte lipstick on pink velvet"
-        src="/images/campaign/velvet-1400.webp"
-        srcset="/images/campaign/velvet-800.webp 800w, /images/campaign/velvet-1400.webp 1400w, /images/campaign/velvet-2000.webp 2000w, /images/campaign/velvet-2800.webp 2800w"
-        sizes="(max-width:900px) 100vw, 68vw"></div>
+
+      <div class="slide s-c" aria-roledescription="slide" aria-label="2 of 4" aria-hidden="true">
+        <div class="c-head">
+          <p class="hr-h big">Matte that survives chai, chaos &amp; bad decisions.</p>
+          <div class="ctas"><a class="pill solid" href="/shop" tabindex="-1">Shop all shades</a><a class="pill" href="/find-your-shade" tabindex="-1">Find your shade</a></div>
+        </div>
+        <div class="c-tri">
+          <img loading="lazy" alt="Lip drip with a Monèshrey lipstick" src="/images/campaign/lip-drip-1400.webp" style="object-position:70% 40%">
+          <img loading="lazy" alt="Model holding a Monèshrey lipstick" src="/images/campaign/model-1400.webp" style="object-position:50% 25%">
+          <img loading="lazy" alt="Monèshrey lipstick on pink velvet" src="/images/campaign/velvet-1400.webp" style="object-position:60% 50%">
+        </div>
+      </div>
+
+      <div class="slide s-e" aria-roledescription="slide" aria-label="3 of 4" aria-hidden="true">
+        <p class="e-big">Matte that survives.</p>
+        <img class="e-pk" loading="lazy" alt="Brown Theory liquid matte lipstick" src="/images/products/brown-theory-1400.webp">
+        <div class="e-foot">
+          <p class="e-copy">Chai, chaos &amp; bad decisions. Eight soft-matte shades made for Indian undertones.</p>
+          <span class="ui e-tag">Brown Theory · ₹520</span>
+          <div class="ctas"><a class="pill solid" href="/shop" tabindex="-1">Shop all shades</a><a class="pill" href="/find-your-shade" tabindex="-1">Find your shade</a></div>
+        </div>
+      </div>
+
+      <div class="slide s-j" aria-roledescription="slide" aria-label="4 of 4" aria-hidden="true">
+        <div class="j-main">
+          <img loading="lazy" alt="Monèshrey lipstick on pink velvet" src="/images/campaign/velvet-2000.webp">
+          <div class="j-txt">
+            <span class="ui">Liquid matte · 8 shades</span>
+            <p class="hr-h big">Matte that survives chai, chaos &amp; bad decisions.</p>
+            <div class="ctas"><a class="pill solid light-s" href="/shop" tabindex="-1">Shop all shades</a><a class="pill light" href="/find-your-shade" tabindex="-1">Find your shade</a></div>
+          </div>
+        </div>
+        <div class="j-side">
+          <a class="ui j-top" href="#irl" tabindex="-1"><span>Monèshrey IRL</span><span>7 reels →</span></a>
+          <a class="j-reel" href="#irl" tabindex="-1"><img loading="lazy" alt="Creator reel wearing Nude Eclipse" src="/images/reels/reel-1673de170a4a46c8b2a9a242e560d50f.webp"><i>▶</i><span><b>Nude Eclipse</b><b>₹520</b></span></a>
+          <a class="j-reel" href="#irl" tabindex="-1"><img loading="lazy" alt="Creator reel wearing Pink Whisper" src="/images/reels/reel-bee3068c50854aa0b6f4fb3a0067f5bc.webp"><i>▶</i><span><b>Pink Whisper</b><b>₹520</b></span></a>
+        </div>
+      </div>
+    </div>
+    <div class="hs-ctl">
+      <div class="hs-bars" id="hsBars" role="group" aria-label="Choose slide"></div>
+      <div class="hs-r"><span class="ui" id="hsCount">01 / 04</span><button class="arr" id="hsPrev" aria-label="Previous slide"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M9 2 4 7l5 5"/></svg></button><button class="arr" id="hsNext" aria-label="Next slide"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m5 2 5 5-5 5"/></svg></button></div>
     </div>
   </header>
 

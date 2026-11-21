@@ -119,3 +119,42 @@ addEventListener('keydown', e => { if (!$('vw').classList.contains('on')) return
 let ty = 0; $('vw').addEventListener('touchstart', e => { ty = e.touches[0].clientY; }, { passive: true });
 $('vw').addEventListener('touchend', e => { const d = e.changedTouches[0].clientY - ty; if (d > 90) closeV(); else if (d < -60) go(1); });
 })();
+
+/* home hero carousel: 4 slides, auto-advance, pause on hover/focus/hidden tab */
+(() => {
+  const hs = document.getElementById('hs'); if (!hs) return;
+  const slides = [...hs.querySelectorAll('.slide')], bars = document.getElementById('hsBars'), count = document.getElementById('hsCount');
+  const DUR = 6500, reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  bars.innerHTML = slides.map((_, i) => `<button aria-label="Go to slide ${i + 1}"><i></i></button>`).join('');
+  const bs = [...bars.children];
+  let cur = 0, t0 = performance.now(), paused = false;
+  const go = i => {
+    cur = (i + slides.length) % slides.length;
+    slides.forEach((s, j) => {
+      const on = j === cur; s.classList.toggle('act', on); s.setAttribute('aria-hidden', !on);
+      s.querySelectorAll('a,button').forEach(el => on ? el.removeAttribute('tabindex') : el.setAttribute('tabindex', '-1'));
+    });
+    bs.forEach((b, j) => { b.firstElementChild.style.width = j < cur ? '100%' : '0'; b.setAttribute('aria-current', j === cur); });
+    count.textContent = `${String(cur + 1).padStart(2, '0')} / ${String(slides.length).padStart(2, '0')}`;
+    t0 = performance.now();
+  };
+  bs.forEach((b, i) => b.onclick = () => go(i));
+  document.getElementById('hsPrev').onclick = () => go(cur - 1);
+  document.getElementById('hsNext').onclick = () => go(cur + 1);
+  const hero = document.getElementById('hero');
+  hero.addEventListener('mouseenter', () => paused = true);
+  hero.addEventListener('mouseleave', () => { paused = false; t0 = performance.now() - parseFloat(bs[cur].firstElementChild.style.width || 0) / 100 * DUR; });
+  hero.addEventListener('focusin', () => paused = true);
+  hero.addEventListener('focusout', () => paused = false);
+  let sx = 0;
+  hs.addEventListener('touchstart', e => { sx = e.touches[0].clientX; }, { passive: true });
+  hs.addEventListener('touchend', e => { const d = e.changedTouches[0].clientX - sx; if (Math.abs(d) > 50) go(cur + (d < 0 ? 1 : -1)); });
+  const tick = t => {
+    if (!paused && !reduce && !document.hidden) {
+      const p = Math.min(1, (t - t0) / DUR); bs[cur].firstElementChild.style.width = p * 100 + '%';
+      if (p >= 1) go(cur + 1);
+    }
+    requestAnimationFrame(tick);
+  };
+  go(0); requestAnimationFrame(tick);
+})();
