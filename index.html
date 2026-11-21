@@ -99,7 +99,7 @@ button{font:inherit;color:inherit;cursor:pointer;background:none;border:0;paddin
 .swipe{position:absolute;z-index:3;left:calc(clamp(16px,2vw,26px) + clamp(250px,26vw,370px) + var(--g)/2);top:52%;transform:translate(-50%,-50%);width:66px;height:66px;border-radius:50%;background:var(--cream);color:var(--ox);display:grid;place-items:center;font:600 12px var(--ui);box-shadow:0 8px 24px -10px rgba(78,20,7,.35);transition:opacity .4s;pointer-events:none}
 .rail-wrap.moved .swipe{opacity:0}
 /* 4-up product grid on desktop, swipe rail on phones */
-@media (min-width:901px){.rail.four{grid-auto-flow:row;grid-template-columns:repeat(4,minmax(0,1fr));overflow:visible;cursor:auto;scroll-snap-type:none}.rail-wrap .bar,.rail-wrap .swipe{display:none}.rail.four .pc{height:clamp(400px,34vw,470px)}}
+@media (min-width:901px){.rail.four{grid-auto-flow:row;grid-template-columns:repeat(4,minmax(0,1fr));overflow:visible;cursor:auto;scroll-snap-type:none}.rail-wrap .bar,.rail-wrap .swipe{display:none}.rail.four .pc{height:auto;aspect-ratio:3/4.2;padding:24px}.rail.four .pc .stage{margin:18px 0 20px}.rail.four .pc .stage img:not(.lip){transform:scale(1.08)}}
 .bar{height:2px;background:var(--line);margin:20px clamp(16px,2vw,26px) 0;border-radius:2px;overflow:hidden}
 .bar i{display:block;height:100%;width:30%;background:var(--ox);transition:transform .15s linear}
 
