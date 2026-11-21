@@ -169,7 +169,7 @@ if (foot) foot.outerHTML = `
   <div class="cols">
     <div class="brand"><a class="flogo" href="/" aria-label="Monèshrey home"></a><p>Liquid matte lipsticks made for Indian skin tones — comfort, confidence &amp; compliments in one swipe.</p><a class="ig ui" href="${CFG.INSTAGRAM}">Instagram · @moneshreyy</a></div>
     <div><h4>Shop</h4><ul><li><a href="/shop">Shop all</a></li>${Object.entries(FAM).map(([k, v]) => `<li><a href="${url.fam(k)}">${v}</a></li>`).join('')}<li><a href="/trio">The Trio — 3 for ₹999</a></li></ul></div>
-    <div><h4>Discover</h4><ul><li><a href="/find-your-shade">Find your shade</a></li><li><a href="/about">Our story</a></li><li><a href="/#reviews">Reviews</a></li></ul></div>
+    <div><h4>Discover</h4><ul><li><a href="/find-your-shade">Find your shade</a></li><li><a href="/about">Our story</a></li></ul></div>
     <div><h4>Help</h4><ul><li><a href="/contact">Contact us</a></li><li><a href="/help#track">Track order</a></li><li><a href="/help#shipping">Shipping</a></li><li><a href="/help#returns">Returns &amp; exchange</a></li><li><a href="/help#cancellation">Cancellation</a></li></ul></div>
   </div>
   <div class="legal"><span>© 2026 Monèshrey Beauty · Ghaziabad, India</span><span>Made for Indian skin · Paraben free · Cruelty free</span><span><a href="/help#privacy">Privacy</a> · <a href="/help#terms">Terms</a></span></div>

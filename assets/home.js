@@ -1,4 +1,4 @@
-/* Homepage: product grid, try-on, trio builder, reels, reviews, FAQ */
+/* Homepage: product grid, try-on, trio builder, reels, FAQ */
 (() => {
 const { S, $, lip, pk, pic, wa, card, note, addShade, addTrio, reviewsHTML, faqHTML } = window.MB;
 
@@ -66,8 +66,7 @@ $('slots').addEventListener('click', e => { const b = e.target.closest('.slot.fu
 $('trioAdd').addEventListener('click', () => { if (trio.length < 3) return; addTrio(trio); trio = []; drawTrio(); });
 drawTrio();
 
-/* reviews + faq */
-$('qs').innerHTML = reviewsHTML();
+/* faq */
 $('faq').innerHTML = faqHTML();
 
 /* reels — the 7 real creator reels from the store. Add a creator by adding one row:
