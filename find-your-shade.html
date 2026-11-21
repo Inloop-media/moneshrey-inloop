@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Find your shade – Monèshrey</title>
+<meta name="description" content="Which lipstick shade suits your skin? Answer three quick questions and get your Monèshrey matches, made for Indian skin tones.">
+<meta name="theme-color" content="#FFFAF7">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232A1215'/%3E%3Ctext x='32' y='46' font-family='Georgia,serif' font-size='40' text-anchor='middle' fill='%23F3DCDC'%3EM%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+</head>
+<body data-page="finder">
+<div class="page">
+  <a class="ann ui" href="/trio"><b>Winter offer</b> — any 3 shades for ₹999 <u>Build your trio →</u></a>
+  <header class="sh ui" data-nav></header>
+
+  <main>
+    <section class="ph">
+      <nav class="crumb ui" aria-label="Breadcrumb"><a href="/">Home</a><span>/</span><span>Find your shade</span></nav>
+      <h1 class="disp">Find your <em>shade</em></h1>
+      <p>Three quick questions. We’ll match you with the shades made for your skin and your style.</p>
+    </section>
+
+    <section class="box-s">
+      <div class="quiz">
+        <div class="steps" id="steps" aria-hidden="true"><i></i><i></i><i></i></div>
+        <div id="stage" aria-live="polite"></div>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-foot"></div>
+</div>
+
+<script src="/assets/site.js"></script>
+<script>
+(() => {
+const { S, $, lip, url, wa, addShade, addTrio, reveal } = window.MB;
+const QS = [
+  { k: 'tone', h: 'What’s your <em>skin tone</em>?', cls: '', o: [
+    ['fair', 'Fair', 'Light, burns easily', '#EFD2BE'], ['medium', 'Medium', 'Light-to-mid brown', '#D9AE8C'],
+    ['wheatish', 'Wheatish', 'Warm golden brown', '#BF8A63'], ['deep', 'Deep', 'Rich dark brown', '#7E5038']] },
+  { k: 'under', h: 'And your <em>undertone</em>?', cls: 'three', o: [
+    ['warm', 'Warm', 'Gold jewellery suits you; veins look greenish', '#C9925A'], ['cool', 'Cool', 'Silver suits you; veins look bluish', '#B6849A'],
+    ['neutral', 'Not sure', 'Both look fine — or you can’t tell', '#B58C7A']] },
+  { k: 'vibe', h: 'What are you <em>shopping for</em>?', cls: 'three', o: [
+    ['everyday', 'Everyday', 'Office, college, brunch — easy to wear', '#C99A8E'], ['glam', 'Soft glam', 'Dinners, dates, a little more colour', '#A65D55'],
+    ['bold', 'Statement', 'Weddings, festive nights, all eyes on you', '#8F2F3B']] },
+];
+/* DEMO matching logic (0–3 per answer) — for Monèshrey to fine-tune */
+const W = {
+  'Nude Eclipse':       { fair: 3, medium: 3, wheatish: 2, deep: 1, warm: 2, cool: 1, neutral: 3, everyday: 3, glam: 2, bold: 0 },
+  'Pink Whisper':       { fair: 3, medium: 2, wheatish: 2, deep: 1, warm: 1, cool: 3, neutral: 2, everyday: 3, glam: 2, bold: 0 },
+  'Bronze Flame':       { fair: 1, medium: 2, wheatish: 3, deep: 3, warm: 3, cool: 0, neutral: 2, everyday: 0, glam: 2, bold: 3 },
+  'Brown Theory':       { fair: 1, medium: 2, wheatish: 3, deep: 3, warm: 3, cool: 1, neutral: 2, everyday: 2, glam: 3, bold: 1 },
+  'Miss Mauve':         { fair: 2, medium: 3, wheatish: 2, deep: 2, warm: 1, cool: 3, neutral: 3, everyday: 3, glam: 3, bold: 0 },
+  'Dusky Petal':        { fair: 3, medium: 3, wheatish: 2, deep: 1, warm: 2, cool: 2, neutral: 2, everyday: 1, glam: 3, bold: 2 },
+  'Chocolate Obsessed': { fair: 0, medium: 1, wheatish: 2, deep: 3, warm: 3, cool: 1, neutral: 2, everyday: 1, glam: 2, bold: 3 },
+  'Shocking Pink':      { fair: 2, medium: 2, wheatish: 2, deep: 2, warm: 1, cool: 3, neutral: 2, everyday: 0, glam: 1, bold: 3 },
+};
+const A = {}; let step = 0;
+const dots = () => [...$('steps').children].forEach((d, i) => d.classList.toggle('on', i <= step));
+const ask = () => {
+  dots(); const q = QS[step];
+  $('stage').innerHTML = `<div class="q-step">
+    <span class="ui eyebrow">Question ${step + 1} of ${QS.length}</span>
+    <h2 class="disp">${q.h}</h2>
+    <div class="opts ${q.cls}">${q.o.map(([v, b, sm, c]) => `<button type="button" class="opt" data-v="${v}" aria-pressed="${A[q.k] === v}"><span class="sk" style="background:${c}"></span><b>${b}</b><small>${sm}</small></button>`).join('')}</div>
+    </div>
+    <div class="q-nav">${step ? '<button type="button" class="lnk" id="back">← Back</button>' : '<span></span>'}<span class="ui" style="color:var(--mute)">${step + 1} / ${QS.length}</span></div>`;
+  const back = $('back'); if (back) back.onclick = () => { step--; ask(); };
+};
+$('stage').addEventListener('click', e => {
+  const b = e.target.closest('.opt'); if (!b) return;
+  A[QS[step].k] = b.dataset.v; b.setAttribute('aria-pressed', 'true');
+  setTimeout(() => { if (step < QS.length - 1) { step++; ask(); } else result(); }, 220);
+});
+const result = () => {
+  step = QS.length; dots();
+  const top = S.map(s => ({ s, sc: W[s.n][A.tone] * 1.2 + W[s.n][A.under] + W[s.n][A.vibe] * 1.4 })).sort((a, b) => b.sc - a.sc).slice(0, 3).map(x => x.s);
+  const label = QS.map(q => q.o.find(o => o[0] === A[q.k])[1]).join(' · ');
+  $('stage').innerHTML = `<div class="q-step">
+    <span class="ui eyebrow">${label}</span>
+    <h2 class="disp">Your <em>matches</em></h2>
+    <div class="res">${top.map((s, i) => `<div class="pk-c"><span class="im"><img src="${lip(s, 900)}" alt="${s.n} on lips"></span><span class="rank ui">${i ? 'Also try' : 'Best match'}</span>
+      <span class="tx"><span><a href="${url.shade(s)}"><b>${s.n}</b></a><small>${s.t}</small></span><button type="button" class="pill" data-add="${s.i}" style="height:38px;padding:0 16px">Add</button></span></div>`).join('')}</div>
+    <div class="res-act"><button type="button" class="pill solid" id="all3">Add all 3 as a trio — ₹999</button><button type="button" class="pill" id="redo">Retake the quiz</button></div>
+    <p class="demo-note">Still unsure? <a class="lnk" href="${wa(`Hi Monèshrey! My quiz matches were ${top.map(s => s.n).join(', ')} — which would you pick for me?`)}">Ask us</a></p>
+  </div>`;
+  $('all3').onclick = () => addTrio(top.map(s => s.i));
+  $('redo').onclick = () => { step = 0; Object.keys(A).forEach(k => delete A[k]); ask(); };
+  $('stage').scrollIntoView({ behavior: 'smooth', block: 'start' });
+};
+ask();
+reveal();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Shop all shades – Monèshrey</title>
+<meta name="description" content="All eight Monèshrey liquid matte lipsticks — nudes, pinks, browns and bolds, made for Indian skin tones. ₹520 each or any 3 for ₹999.">
+<meta name="theme-color" content="#FFFAF7">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232A1215'/%3E%3Ctext x='32' y='46' font-family='Georgia,serif' font-size='40' text-anchor='middle' fill='%23F3DCDC'%3EM%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+</head>
+<body data-page="shop">
+<div class="page">
+  <a class="ann ui" href="/trio"><b>Winter offer</b> — any 3 shades for ₹999 <u>Build your trio →</u></a>
+  <header class="sh ui" data-nav></header>
+
+  <main>
+    <section class="ph">
+      <nav class="crumb ui" aria-label="Breadcrumb"><a href="/">Home</a><span>/</span><span id="crumbNow">Shop</span></nav>
+      <h1 class="disp" id="title">All <em>shades</em></h1>
+      <p id="lede">Eight soft-matte liquid lipsticks, built around Indian undertones. Up to 16-hour wear, waterproof and comfortable all day.</p>
+      <div class="filters" id="filters" role="group" aria-label="Filter by shade family"></div>
+    </section>
+
+    <section class="wall-wrap" aria-label="Shade wall">
+      <div class="wall" id="wall"></div>
+      <p class="wall-note">Every shade ₹520 (was ₹650) · or any 3 for ₹999</p>
+    </section>
+
+    <section class="cta-band">
+      <div>
+        <span class="ui eyebrow">Winter offer · The Trio</span>
+        <h2 class="disp">Any 3 shades, <em>₹999</em></h2>
+        <p>A nude for work, a brown for dinner, a pink for the plot twist. Worth ₹1,950.</p>
+      </div>
+      <div class="act"><a class="pill solid" href="/trio">Build your trio</a><a class="pill" href="/find-your-shade">Find your shade</a></div>
+    </section>
+  </main>
+
+  <div id="site-foot"></div>
+</div>
+
+<script src="/assets/site.js"></script>
+<script>
+(() => {
+const { S, FAM, $, card, reveal } = window.MB;
+const LEDE = {
+  all: 'Eight soft-matte liquid lipsticks, built around Indian undertones. Up to 16-hour wear, waterproof and comfortable all day.',
+  nudes: 'Everyday nudes with warmth — no chalky, washed-out finish on brown skin.',
+  pinks: 'From a soft flush to a full statement pink.',
+  browns: 'Rich, earthy browns made for Indian undertones — never orange.',
+  bolds: 'Statement shades for festive nights, weddings and anything with a dress code.',
+};
+$('wall').innerHTML = S.map(card).join('');
+const cards = [...document.querySelectorAll('.wall .pc')];
+const draw = f => {
+  $('filters').innerHTML = [['all', 'All', S.length], ...Object.entries(FAM).map(([k, v]) => [k, v, S.filter(s => s.fam.includes(k)).length])]
+    .map(([k, v, n]) => `<button type="button" data-f="${k}" aria-pressed="${k === f}">${v}<span>${n}</span></button>`).join('');
+  cards.forEach((c, i) => { c.hidden = f !== 'all' && !S[i].fam.includes(f); });
+  $('title').innerHTML = f === 'all' ? 'All <em>shades</em>' : `<em>${FAM[f]}</em>`;
+  $('crumbNow').textContent = f === 'all' ? 'Shop' : FAM[f];
+  $('lede').textContent = LEDE[f];
+  document.title = (f === 'all' ? 'Shop all shades' : FAM[f]) + ' – Monèshrey';
+};
+const start = new URLSearchParams(location.search).get('family');
+draw(FAM[start] ? start : 'all');
+$('filters').addEventListener('click', e => {
+  const b = e.target.closest('[data-f]'); if (!b) return; const f = b.dataset.f;
+  history.replaceState(null, '', f === 'all' ? location.pathname : `${location.pathname}?family=${f}`);
+  draw(f);
+});
+reveal();
+})();
+</script>
+</body>
+</html>

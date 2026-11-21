@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Build your trio – any 3 shades for ₹999 – Monèshrey</title>
+<meta name="description" content="Pick any 3 Monèshrey liquid matte lipsticks for ₹999 (worth ₹1,950). Nudes, pinks, browns and bolds made for Indian skin.">
+<meta name="theme-color" content="#FFFAF7">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232A1215'/%3E%3Ctext x='32' y='46' font-family='Georgia,serif' font-size='40' text-anchor='middle' fill='%23F3DCDC'%3EM%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+</head>
+<body data-page="trio">
+<div class="page">
+  <a class="ann ui" href="/shop"><b>Winter offer</b> — any 3 shades for ₹999 <u>Shop all shades →</u></a>
+  <header class="sh ui" data-nav></header>
+
+  <main>
+    <section class="ph">
+      <nav class="crumb ui" aria-label="Breadcrumb"><a href="/">Home</a><span>/</span><span>The Trio</span></nav>
+      <h1 class="disp">Build your <em>trio</em></h1>
+      <p>Pick any three shades for ₹999 — worth ₹1,950. A nude for work, a brown for dinner, a pink for the plot twist.</p>
+    </section>
+
+    <section class="box-s" aria-label="Choose three shades">
+      <div class="pick" id="pick"></div>
+    </section>
+
+    <div class="trio-bar" id="tbar">
+      <div class="slots" id="slots"></div>
+      <span class="names" id="names"></span>
+      <div class="sum"><b>₹999<s>₹1,950</s></b></div>
+      <button class="pill solid" id="tAdd" type="button" disabled></button>
+    </div>
+
+    <section class="cta-band">
+      <div>
+        <span class="ui eyebrow">Not sure where to start?</span>
+        <h2 class="disp">Find your <em>shade</em></h2>
+        <p>Three quick questions about your skin and your style, and we’ll suggest a trio.</p>
+      </div>
+      <div class="act"><a class="pill solid" href="/find-your-shade">Take the quiz</a><a class="pill" id="waT" href="/contact">Ask us</a></div>
+    </section>
+  </main>
+
+  <div id="site-foot"></div>
+</div>
+
+<script src="/assets/site.js"></script>
+<script>
+(() => {
+const { S, $, lip, url, wa, note, pk, addTrio, bySlug, reveal } = window.MB;
+let trio = [];
+const pre = bySlug(new URLSearchParams(location.search).get('with') || '');
+if (pre) trio.push(pre.i);
+$('waT').href = wa('Hi Monèshrey! Can you help me pick a trio for my skin tone?');
+
+$('pick').innerHTML = S.map(s => `
+<button type="button" class="pk-c" data-i="${s.i}" aria-pressed="false" aria-label="${s.n}, ${s.t}">
+  <span class="im"><img src="${lip(s, 900)}" alt="" loading="lazy"></span>
+  <span class="tx"><span><b>${s.n}</b><small>${s.t}</small></span><span class="ck"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m3 7.5 2.6 2.5L11 4.5"/></svg></span></span>
+</button>`).join('');
+
+const draw = () => {
+  document.querySelectorAll('.pk-c').forEach(c => c.setAttribute('aria-pressed', trio.includes(+c.dataset.i)));
+  $('slots').innerHTML = [0, 1, 2].map(k => { const s = trio[k] != null ? S[trio[k]] : null; return s ? `<button class="slot full" style="background:${s.c}" data-k="${k}" aria-label="Remove ${s.n}"></button>` : `<div class="slot">${k + 1}</div>`; }).join('');
+  $('names').textContent = trio.length ? trio.map(i => S[i].n).join(' · ') : 'Pick any 3 shades';
+  const b = $('tAdd'); b.disabled = trio.length < 3; b.textContent = trio.length < 3 ? `Pick ${3 - trio.length} more` : 'Add trio to bag';
+};
+$('pick').addEventListener('click', e => {
+  const c = e.target.closest('.pk-c'); if (!c) return; const i = +c.dataset.i;
+  if (trio.includes(i)) trio = trio.filter(x => x !== i);
+  else if (trio.length >= 3) { note('Your trio is full', 'Tap a selected shade to swap it', pk(S[trio[0]], 400)); return; }
+  else trio.push(i);
+  draw();
+});
+$('slots').addEventListener('click', e => { const b = e.target.closest('.slot.full'); if (b) { trio.splice(+b.dataset.k, 1); draw(); } });
+$('tAdd').addEventListener('click', () => { if (trio.length < 3) return; addTrio(trio); trio = []; draw(); });
+draw();
+reveal();
+})();
+</script>
+</body>
+</html>

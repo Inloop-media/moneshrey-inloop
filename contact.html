@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Contact us – Monèshrey</title>
+<meta name="description" content="Questions about a shade or an order? Reach Monèshrey on WhatsApp, email or the contact form.">
+<meta name="theme-color" content="#FFFAF7">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232A1215'/%3E%3Ctext x='32' y='46' font-family='Georgia,serif' font-size='40' text-anchor='middle' fill='%23F3DCDC'%3EM%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+</head>
+<body data-page="contact">
+<div class="page">
+  <a class="ann ui" href="/trio"><b>Winter offer</b> — any 3 shades for ₹999 <u>Build your trio →</u></a>
+  <header class="sh ui" data-nav></header>
+
+  <main>
+    <section class="ph">
+      <nav class="crumb ui" aria-label="Breadcrumb"><a href="/">Home</a><span>/</span><span>Contact</span></nav>
+      <h1 class="disp">We’d love to <em>help</em></h1>
+      <p id="lede"></p>
+    </section>
+
+    <section class="ct">
+      <div class="box-s">
+        <div class="sec-h" style="margin-bottom:24px"><div><span class="ui eyebrow">Reach us</span><h2 class="disp">The quickest <em>ways</em></h2></div></div>
+        <div class="ways" id="ways"></div>
+        <address class="addr" id="addr"></address>
+      </div>
+
+      <div class="box-c">
+        <div class="sec-h" style="margin-bottom:24px"><div><span class="ui eyebrow">Write to us</span><h2 class="disp">Send a <em>message</em></h2></div></div>
+        <!-- Posts to Shopify's built-in contact form; on the Shopify theme replace with {% form 'contact' %} -->
+        <form class="form" id="cf" method="post" action="https://moneshrey.in/contact#contact_form" accept-charset="UTF-8" target="_blank">
+          <input type="hidden" name="form_type" value="contact"><input type="hidden" name="utf8" value="✓">
+          <div class="two">
+            <div class="field"><label class="ui" for="cn">Name</label><input id="cn" name="contact[name]" autocomplete="name" required></div>
+            <div class="field"><label class="ui" for="ce">Email</label><input id="ce" name="contact[email]" type="email" autocomplete="email" required></div>
+          </div>
+          <div class="two">
+            <div class="field"><label class="ui" for="cp">Phone (optional)</label><input id="cp" name="contact[phone]" type="tel" autocomplete="tel"></div>
+            <div class="field"><label class="ui" for="co">Order number (optional)</label><input id="co" name="contact[order]" placeholder="#1001"></div>
+          </div>
+          <div class="field"><label class="ui" for="ct">Topic</label>
+            <select id="ct" name="contact[topic]"><option>Help choosing a shade</option><option>An order I placed</option><option>Returns or a damaged item</option><option>Collaborations &amp; press</option><option>Something else</option></select></div>
+          <div class="field"><label class="ui" for="cm">Message</label><textarea id="cm" name="contact[body]" required></textarea></div>
+          <button class="pill solid" type="submit">Send message</button>
+          <p class="ok" id="cok" role="status"></p>
+        </form>
+      </div>
+    </section>
+
+    <section class="cta-band">
+      <div>
+        <span class="ui eyebrow">Looking for an answer?</span>
+        <h2 class="disp">Help <em>centre</em></h2>
+        <p>Track an order, read our returns policy, or browse the most common questions.</p>
+      </div>
+      <div class="act"><a class="pill solid" href="/help">Visit Help</a><a class="pill" href="/help#track">Track order</a></div>
+    </section>
+  </main>
+
+  <div id="site-foot"></div>
+</div>
+
+<script src="/assets/site.js"></script>
+<script>
+(() => {
+const { CFG, $, wa, reveal } = window.MB;
+const ic = {
+  wa: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Z"/></svg>',
+  mail: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 6h18v12H3z"/><path d="m3 7 9 6 9-6"/></svg>',
+  phone: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2Z"/></svg>',
+  ig: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></svg>',
+};
+$('lede').textContent = `Questions about a shade, an order or a delivery? We usually reply ${CFG.RESPONSE}.`;
+const ways = [
+  [ic.wa, 'WhatsApp', CFG.WA_NUMBER ? 'Shade advice and order help' : 'Number to be added', CFG.WA_NUMBER ? wa('Hi Monèshrey!') : null],
+  [ic.mail, CFG.EMAIL, `Replies ${CFG.RESPONSE}`, 'mailto:' + CFG.EMAIL],
+  CFG.PHONE && [ic.phone, CFG.PHONE, 'Customer care', 'tel:' + CFG.PHONE.replace(/\s/g, '')],
+  [ic.ig, '@moneshreyy', 'DMs open — tag us in your looks', CFG.INSTAGRAM],
+].filter(Boolean);
+$('ways').innerHTML = ways.map(([i, b, sm, href]) => `<${href ? `a href="${href}"${href.startsWith('http') ? ' target="_blank" rel="noopener"' : ''}` : 'div'} class="way"><span class="ic">${i}</span><span><b>${b}</b><small>${sm}</small></span><span class="go" aria-hidden="true">${href ? '→' : ''}</span></${href ? 'a' : 'div'}>`).join('');
+$('addr').innerHTML = `<span class="ui eyebrow" style="display:block;margin-bottom:8px">Studio</span>${CFG.ADDRESS.replace(/, (?=Ghaziabad|Uttar)/g, '<br>')}`;
+$('cf').addEventListener('submit', () => { $('cok').textContent = `Thank you — we’ll get back to you ${CFG.RESPONSE}.`; });
+reveal();
+})();
+</script>
+</body>
+</html>

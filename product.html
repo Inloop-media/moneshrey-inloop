@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Liquid matte lipstick – Monèshrey</title>
+<meta name="description" content="Monèshrey liquid matte lipstick, made for Indian skin tones. Up to 16-hour wear, waterproof, paraben and fragrance free.">
+<meta name="theme-color" content="#FFFAF7">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232A1215'/%3E%3Ctext x='32' y='46' font-family='Georgia,serif' font-size='40' text-anchor='middle' fill='%23F3DCDC'%3EM%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+</head>
+<body data-page="product" class="has-stick">
+<div class="page">
+  <a class="ann ui" href="/trio"><b>Winter offer</b> — any 3 shades for ₹999 <u>Build your trio →</u></a>
+  <header class="sh ui" data-nav></header>
+
+  <main>
+    <section class="pdp">
+      <div>
+        <div class="gal" id="gal" aria-label="Product photos"></div>
+        <div class="dots" id="dots" aria-hidden="true"></div>
+      </div>
+
+      <aside class="buy" id="buy">
+        <nav class="crumb ui" aria-label="Breadcrumb"><a href="/shop">Shop</a><span>/</span><a id="crFam" href="/shop"></a></nav>
+        <div>
+          <h1 class="disp" id="name"></h1>
+          <p class="tone ui" id="tone"></p>
+        </div>
+        <div class="rate"><span class="st" aria-hidden="true">★★★★★</span><a href="#reviews">Read reviews</a></div>
+        <div class="price"><b id="pr"></b><s id="mrp"></s><span class="off">20% off</span><small>Taxes included</small></div>
+        <p class="intro" id="intro"></p>
+        <div>
+          <div class="sw-h ui"><b>Shade</b><span id="swName"></span></div>
+          <div class="sw" id="sw" style="margin-top:12px"></div>
+        </div>
+        <div class="addrow">
+          <div class="qty"><button type="button" id="qm" aria-label="Decrease quantity">−</button><span id="qn">1</span><button type="button" id="qp" aria-label="Increase quantity">+</button></div>
+          <button class="pill solid" id="add" type="button"></button>
+        </div>
+        <a class="upsell-b" id="ups" href="/trio"><span>Add 2 more shades for <b>₹999</b> — build your trio</span><span aria-hidden="true">→</span></a>
+        <div class="pin">
+          <span class="ui">Check delivery</span>
+          <form id="pinF" novalidate><input id="pinI" inputmode="numeric" autocomplete="postal-code" maxlength="6" placeholder="Enter your pincode" aria-label="Pincode"><button type="submit">Check</button></form>
+          <p id="pinR" role="status"></p>
+        </div>
+        <ul class="assure-l" id="assure"></ul>
+        <div class="help-l"><span>Confused about your shade?</span><a class="lnk" id="waP" href="/contact">Ask us on WhatsApp <span aria-hidden="true">→</span></a></div>
+      </aside>
+    </section>
+
+    <section class="onlip">
+      <div class="im reveal"><img id="olImg" alt="" loading="lazy"></div>
+      <div class="tx rv">
+        <span class="ui eyebrow">On real lips</span>
+        <h2 class="disp" id="olH"></h2>
+        <p id="olP"></p>
+        <span class="todo">Fair · medium · wheatish · deep swatches to be added</span>
+        <a class="lnk" href="/#try">Compare every shade on lips <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+
+    <section class="box-s hsec" id="details">
+      <div><span class="ui eyebrow">The details</span><h2 class="disp" id="detH"></h2></div>
+      <div class="acc" id="acc"></div>
+    </section>
+
+    <section class="panel revs" id="reviews">
+      <div class="hd">
+        <div><span class="ui eyebrow">Reviews</span><h2 class="disp">In <em>their</em> words</h2></div>
+        <a class="lnk" href="/contact">Write a review <span aria-hidden="true">→</span></a>
+      </div>
+      <div class="qs" id="qs"></div>
+      <p class="note">Sample reviews for this demo. Live reviews will come from Judge.me.</p>
+    </section>
+
+    <section class="panel rail-wrap">
+      <div class="rail-head">
+        <div><span class="ui">Pairs well with</span><h2 class="disp">More <em>shades</em></h2></div>
+        <a class="lnk" href="/shop">Shop all <span aria-hidden="true">→</span></a>
+      </div>
+      <div class="rail" id="more"></div>
+      <div class="bar"><i id="moreBar"></i></div>
+    </section>
+  </main>
+
+  <div id="site-foot"></div>
+</div>
+
+<div class="stickbar" id="stick" aria-hidden="true"><b id="stN"></b><button class="pill solid" id="stAdd" type="button" tabindex="-1"></button></div>
+
+<script src="/assets/site.js"></script>
+<script>
+(() => {
+const { S, FAM, CFG, $, fmt, lip, pk, img, wa, url, bySlug, eta, card, addShade, reviewsHTML, reveal } = window.MB;
+/* the shade comes from /shades/<slug> (Vercel rewrite) or ?shade=<slug> */
+const slug = new URLSearchParams(location.search).get('shade') || location.pathname.split('/').filter(Boolean).pop();
+const s = bySlug(slug) || S[0];
+const fam = s.fam[0];
+
+document.title = `${s.n} – Liquid Matte Lipstick – Monèshrey`;
+document.querySelector('meta[name=description]').content = `${s.n}: ${s.t.toLowerCase()} liquid matte lipstick made for Indian skin tones. Up to 16-hour wear, waterproof, paraben and fragrance free. ₹520.`;
+
+/* gallery */
+const camp = img('velvet', [800, 1400]);
+const G = [
+  { cls: 'pk', src: pk(s, 1400), set: `${pk(s, 800)} 800w, ${pk(s, 1400)} 1400w`, alt: `${s.n} liquid matte lipstick with swatch` },
+  { cls: 'lipf', src: lip(s, 1600), set: `${lip(s, 900)} 900w, ${lip(s, 1600)} 1600w`, alt: `${s.n} worn on lips`, cap: 'On lips' },
+  { cls: 'pk', src: pk(s, 1400, '-open'), set: `${pk(s, 800, '-open')} 800w, ${pk(s, 1400, '-open')} 1400w`, alt: `${s.n} tube with applicator` },
+  { cls: 'pk', src: '/images/products/box-1400.webp', set: '/images/products/box-800.webp 800w, /images/products/box-1400.webp 1400w', alt: 'Monèshrey liquid lipstick box', cap: 'Net vol. 6 ml' },
+  { cls: '', src: camp.src, set: camp.srcset, alt: 'Monèshrey lipstick on pink velvet' },
+];
+$('gal').innerHTML = G.map((g, i) => `<figure class="${g.cls}"><img src="${g.src}" srcset="${g.set}" sizes="(max-width:900px) 100vw, ${i ? 28 : 56}vw" alt="${g.alt}"${i ? ' loading="lazy"' : ' fetchpriority="high"'}>${g.cap ? `<figcaption class="ui">${g.cap}</figcaption>` : ''}</figure>`).join('');
+$('dots').innerHTML = G.map((_, i) => `<i${i ? '' : ' class="on"'}></i>`).join('');
+$('gal').addEventListener('scroll', () => { const i = Math.round($('gal').scrollLeft / $('gal').clientWidth); [...$('dots').children].forEach((d, j) => d.classList.toggle('on', j === i)); }, { passive: true });
+
+/* buy panel */
+$('crFam').textContent = FAM[fam]; $('crFam').href = url.fam(fam);
+$('name').textContent = s.n;
+$('tone').textContent = `${s.t} · Liquid matte · 6 ml`;
+$('pr').textContent = fmt(s.price); $('mrp').textContent = fmt(s.mrp);
+$('intro').textContent = s.d[0];
+$('swName').textContent = s.n;
+$('sw').innerHTML = S.map(x => `<a href="${url.shade(x)}" style="background:${x.c}" aria-label="${x.n}" title="${x.n}" data-n="${x.n}"${x === s ? ' aria-current="true"' : ''}></a>`).join('');
+$('sw').addEventListener('mouseover', e => { const a = e.target.closest('[data-n]'); if (a) $('swName').textContent = a.dataset.n; });
+$('sw').addEventListener('mouseleave', () => { $('swName').textContent = s.n; });
+let q = 1;
+const drawQ = () => { $('qn').textContent = q; $('add').textContent = `Add to bag — ${fmt(s.price * q)}`; };
+$('qm').onclick = () => { q = Math.max(1, q - 1); drawQ(); };
+$('qp').onclick = () => { q = Math.min(9, q + 1); drawQ(); };
+drawQ();
+$('add').onclick = () => addShade(s.i, q);
+$('ups').href = url.trioWith(s);
+$('assure').innerHTML = [
+  CFG.COD && ['M3 7h18v10H3zM3 11h18M7 15h3', 'Cash on delivery available'],
+  ['M3 7h11v9H3zM14 10h4l3 3v3h-7M7 19a2 2 0 1 0 0-.1M17 19a2 2 0 1 0 0-.1', `Usually delivered in ${CFG.DELIVERY_DAYS} days`],
+  ['M12 3 4 6v6c0 4.5 3.4 8 8 9 4.6-1 8-4.5 8-9V6z M9 12l2 2 4-4', 'Damaged or wrong item? We’ll replace it'],
+].filter(Boolean).map(([d, t]) => `<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"><path d="${d}"/></svg>${t}</li>`).join('');
+$('waP').href = wa(`Hi Monèshrey! Is ${s.n} right for my skin tone?`);
+if (!CFG.WA_NUMBER) $('waP').firstChild.textContent = 'Ask us ';
+
+/* pincode check — DEMO: no courier lookup yet, it only validates the format and shows the usual delivery date */
+$('pinF').addEventListener('submit', e => {
+  e.preventDefault(); const v = $('pinI').value.trim();
+  $('pinR').textContent = /^[1-9]\d{5}$/.test(v) ? `Delivery to ${v} by ${eta}${CFG.COD ? ' · Cash on delivery available' : ''}` : 'Please enter a valid 6-digit pincode';
+});
+
+/* on lips */
+$('olImg').src = lip(s, 1600); $('olImg').srcset = `${lip(s, 900)} 900w, ${lip(s, 1600)} 1600w`; $('olImg').sizes = '(max-width:900px) 100vw, 50vw'; $('olImg').alt = `${s.n} worn on lips`;
+$('olH').innerHTML = `${s.n.split(' ')[0]} <em>${s.n.split(' ').slice(1).join(' ')}</em>`;
+$('olP').textContent = `${s.t} — swatched on real brown lips, no filters. ${s.end}`;
+
+/* details */
+$('detH').innerHTML = `Everything about <em>${s.n}</em>`;
+const ACC = [
+  ['Description', `<p>${s.d[0]}</p><p>${s.d[1]}</p><p><em>${s.end}</em></p>`],
+  ['Why you’ll love it', `<ul>${s.love.map(l => `<li>${l}</li>`).join('')}</ul>`],
+  ['Finish & wear', '<ul><li>Creamy soft matte finish</li><li>Up to 16-hour wear</li><li>Waterproof and smudge-resistant</li><li>Transfer-resistant (oily food can test it)</li><li>Net volume 6 ml</li></ul>'],
+  ['How to apply', '<ol><li>Start with clean, dry lips. On very dry days, a little balm — blotted off — helps.</li><li>Outline the cupid’s bow and outer corners with the tip of the applicator.</li><li>Fill in from the centre outwards in one thin, even layer.</li><li>Let it set for a minute. Add a second layer for deeper colour.</li></ol>'],
+  ['Ingredients', '<p>Paraben free · Fragrance free · Cruelty free · Tested for safety.</p><p><span class="todo">Full ingredient list to be added from the pack</span></p>'],
+  ['Delivery & returns', `<p>${CFG.COD ? 'Cash on delivery available. ' : ''}Usually delivered in ${CFG.DELIVERY_DAYS} days.</p><p>For hygiene reasons, opened beauty products can’t be returned. If your order arrives damaged or incorrect, we’ll fix it as soon as possible. <a class="lnk" href="/help#returns">Returns policy</a></p>`],
+];
+$('acc').innerHTML = ACC.map((a, i) => `<details${i ? '' : ' open'}><summary>${a[0]}<span>+</span></summary><div>${a[1]}</div></details>`).join('');
+$('qs').innerHTML = reviewsHTML();
+
+/* more shades */
+$('more').innerHTML = S.filter(x => x !== s).map(card).join('');
+const more = $('more'), bar = $('moreBar');
+const upd = () => { const m = more.scrollWidth - more.clientWidth; const vis = Math.min(1, more.clientWidth / more.scrollWidth); bar.style.width = (vis * 100) + '%'; bar.style.transform = `translateX(${m > 0 ? (more.scrollLeft / m) * (1 / vis - 1) * 100 : 0}%)`; };
+more.addEventListener('scroll', upd, { passive: true }); addEventListener('resize', upd); upd();
+
+/* sticky add-to-bag bar on phones, shown once the main button scrolls away */
+$('stN').textContent = s.n; $('stAdd').textContent = `Add — ${fmt(s.price)}`;
+$('stAdd').onclick = () => addShade(s.i);
+new IntersectionObserver(([en]) => { const on = !en.isIntersecting && en.boundingClientRect.top < 0; $('stick').classList.toggle('on', on); $('stick').setAttribute('aria-hidden', !on); $('stAdd').tabIndex = on ? 0 : -1; }).observe($('add'));
+
+/* structured data for Google (one Product, one H1) */
+const ld = document.createElement('script'); ld.type = 'application/ld+json';
+ld.textContent = JSON.stringify({ '@context': 'https://schema.org', '@type': 'Product', name: `${s.n} Liquid Matte Lipstick`, brand: { '@type': 'Brand', name: 'Monèshrey' }, image: location.origin + pk(s, 1400), description: s.d[0], offers: { '@type': 'Offer', priceCurrency: 'INR', price: s.price, availability: 'https://schema.org/InStock' } });
+document.head.appendChild(ld);
+reveal();
+})();
+</script>
+</body>
+</html>

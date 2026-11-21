@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Help centre – Monèshrey</title>
+<meta name="description" content="Track your Monèshrey order, read about shipping, returns and cancellations, and find answers to common questions.">
+<meta name="theme-color" content="#FFFAF7">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232A1215'/%3E%3Ctext x='32' y='46' font-family='Georgia,serif' font-size='40' text-anchor='middle' fill='%23F3DCDC'%3EM%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+</head>
+<body data-page="help">
+<div class="page">
+  <a class="ann ui" href="/trio"><b>Winter offer</b> — any 3 shades for ₹999 <u>Build your trio →</u></a>
+  <header class="sh ui" data-nav></header>
+
+  <main>
+    <section class="ph">
+      <nav class="crumb ui" aria-label="Breadcrumb"><a href="/">Home</a><span>/</span><span>Help</span></nav>
+      <h1 class="disp">Help <em>centre</em></h1>
+      <p>Everything about orders, delivery and returns — and if you can’t find it here, we’re a message away.</p>
+    </section>
+
+    <section class="tiles" aria-label="Help topics">
+      <a class="tile" href="#track"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg><b>Track your order</b><small>Where’s my lipstick?</small></a>
+      <a class="tile" href="#shipping"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M3 7h18v10H3zM3 11h18M7 15h3"/></svg><b>Shipping &amp; payment</b><small>Delivery times and cash on delivery</small></a>
+      <a class="tile" href="#returns"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M4 9h11a5 5 0 0 1 0 10H9M4 9l4-4M4 9l4 4"/></svg><b>Returns &amp; exchange</b><small>Damaged or wrong item</small></a>
+      <a class="tile" href="#cancellation"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="12" cy="12" r="9"/><path d="m9 9 6 6m0-6-6 6"/></svg><b>Cancellation</b><small>Changing your mind</small></a>
+      <a class="tile" href="#faq"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6V14M12 17h.01"/></svg><b>FAQ</b><small>Formula, wear and shades</small></a>
+      <a class="tile" href="/contact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M3 6h18v12H3z"/><path d="m3 7 9 6 9-6"/></svg><b>Contact us</b><small id="tileReply"></small></a>
+    </section>
+
+    <section class="box-s hsec" id="track">
+      <div><span class="ui eyebrow">Orders</span><h2 class="disp">Track your <em>order</em></h2></div>
+      <div class="bd">
+        <p>Your tracking link is in the confirmation email and SMS we send when your order ships. You can also sign in to your account to see every order’s status.</p>
+        <form class="form" id="tf" style="max-width:520px">
+          <div class="two">
+            <div class="field"><label class="ui" for="to">Order number</label><input id="to" placeholder="#1001" required></div>
+            <div class="field"><label class="ui" for="te">Email or phone</label><input id="te" required></div>
+          </div>
+          <button class="pill solid" type="submit">Track order</button>
+          <p class="ok" id="tok" role="status"></p>
+        </form>
+      </div>
+    </section>
+
+    <section class="box-c hsec" id="shipping">
+      <div><span class="ui eyebrow">Delivery</span><h2 class="disp">Shipping &amp; <em>payment</em></h2></div>
+      <div class="bd" id="shipBd"></div>
+    </section>
+
+    <section class="box-s hsec" id="returns">
+      <div><span class="ui eyebrow">Returns</span><h2 class="disp">Returns &amp; <em>exchange</em></h2></div>
+      <div class="bd">
+        <p>For hygiene reasons, opened beauty products can’t be returned.</p>
+        <p>If your order arrives damaged or incorrect, we’ll fix it as soon as possible — message us with your order number and a photo of the item, and we’ll arrange a replacement.</p>
+        <p><a class="lnk" href="/contact">Report a damaged or wrong item <span aria-hidden="true">→</span></a></p>
+        <span class="todo">Full policy (time window, process) to be added by Monèshrey</span>
+      </div>
+    </section>
+
+    <section class="box-c hsec" id="cancellation">
+      <div><span class="ui eyebrow">Orders</span><h2 class="disp">Order <em>cancellation</em></h2></div>
+      <div class="bd">
+        <p>Need to cancel? Contact us as soon as possible with your order number, before it ships.</p>
+        <span class="todo">Cancellation policy text to be added by Monèshrey</span>
+      </div>
+    </section>
+
+    <section class="box-s hsec" id="faq">
+      <div><span class="ui eyebrow">Questions</span><h2 class="disp">Frequently <em>asked</em></h2></div>
+      <div class="bd acc" id="faqL"></div>
+    </section>
+
+    <section class="box-c hsec" id="privacy">
+      <div><span class="ui eyebrow">Official</span><h2 class="disp">Privacy &amp; <em>terms</em></h2></div>
+      <div class="bd" id="terms">
+        <p>Our privacy policy and terms &amp; conditions explain how we use your information and the terms of every order.</p>
+        <span class="todo">Policy pages to be published in Shopify (Settings → Policies)</span>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-foot"></div>
+</div>
+
+<script src="/assets/site.js"></script>
+<script>
+(() => {
+const { CFG, FAQ, $, fmt, faqHTML, reveal } = window.MB;
+$('tileReply').textContent = `We reply ${CFG.RESPONSE}`;
+$('shipBd').innerHTML = `
+  <ul>
+    <li>Orders are usually delivered in about ${CFG.DELIVERY_DAYS} days. You’ll see the expected date at checkout and on every product page.</li>
+    ${CFG.COD ? '<li>Cash on delivery is available, as well as online payment at checkout.</li>' : ''}
+    ${CFG.FREE_SHIP ? `<li>Free shipping on orders of ${fmt(CFG.FREE_SHIP)} and above — including any trio.</li>` : ''}
+  </ul>
+  <span class="todo">Confirm delivery times, COD and free-shipping threshold</span>`;
+$('faqL').innerHTML = faqHTML([
+  ...FAQ,
+  ['Which shade suits my skin?', 'Take our one-minute shade quiz, or message us — tell us your skin tone and the look you like, and we’ll suggest a shade.'],
+  ['Can I mix shades in a combo?', 'Yes — pick any three shades for ₹999 on The Trio page.'],
+  ['Is it cruelty free?', 'Yes. Every Monèshrey lipstick is cruelty free, paraben free and fragrance free.'],
+]);
+/* DEMO: Shopify has no public order lookup — on the live theme this opens the customer's order status page */
+$('tf').addEventListener('submit', e => { e.preventDefault(); $('tok').innerHTML = 'Open the tracking link in your confirmation email, or <a class="lnk" href="https://moneshrey.in/account/login" target="_blank" rel="noopener">sign in to your account</a>.'; });
+reveal();
+})();
+</script>
+</body>
+</html>
