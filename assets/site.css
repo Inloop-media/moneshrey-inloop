@@ -2,11 +2,11 @@
 VOICE   quiet confidence, with Monèshrey's cheek kept in the copy
 IDEA    a vanity of rounded trays: every section sits in its own inset panel
 PICTURE campaign photography, big and cropped; a sticky lip try-on that changes per shade
-COLOUR  pink & black (brief): cream #FFFAF7 page, dusty powder pink #F3DCDC + warm sand #F4ECE7 panels, wine-black #2A1215 ink
+COLOUR  pink & black (brief): cream #FFFAF7 page, dusty powder pink #F3DCDC + soft petal-nude #F8E8E4 panels, wine-black #2A1215 ink
 TYPE    Cormorant Garamond (fine luxury serif, italic accents) for headings, Jost (geometric, fashion-house sans) for UI and copy
 */
 :root{
-  --cream:#FFFAF7; --sand:#F4ECE7; --blush:#F3DCDC; --ox:#2A1215; --ox-d:#4A2328;
+  --cream:#FFFAF7; --sand:#F8E8E4; --blush:#F3DCDC; --ox:#2A1215; --ox-d:#4A2328;
   --ink:#34272A; --mute:#76676A; --line:rgba(42,18,21,.14);
   --disp:"Cormorant Garamond","Cormorant",Garamond,Georgia,serif; --ui:"Jost","Futura","Century Gothic",Helvetica,Arial,sans-serif; --body:"Jost","Futura","Century Gothic",Helvetica,Arial,sans-serif;
   --g:clamp(10px,1.3vw,18px); --r:16px; --ease:cubic-bezier(.2,.7,.2,1);
