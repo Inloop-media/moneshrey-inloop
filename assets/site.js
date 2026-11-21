@@ -153,27 +153,27 @@ document.body.insertAdjacentHTML('beforeend', chrome);
 /* ---- footer ---- */
 const foot = $('site-foot');
 if (foot) foot.outerHTML = `
-<section class="panel wordmark" aria-hidden="true"><div class="wm"></div><div class="tl ui"><span>Made for Indian skin</span><span>Liquid matte · 8 shades</span><span>Ghaziabad, India</span></div></section>
 <footer class="panel foot">
   <div class="news">
-    <div><h3 class="disp">Join the <em>list</em></h3><p>Sign up to unlock any 3 shades for ₹999, plus first dibs on new drops.</p></div>
+    <div><span class="ui eb">The Monèshrey list</span><h3 class="disp">Join the <em>list</em></h3><p>Sign up to unlock any 3 shades for ₹999, plus first dibs on new drops.</p></div>
     <div>
       <!-- Posts to Shopify's built-in customer (newsletter) form; on the Shopify theme replace with {% form 'customer' %} -->
       <form id="news" method="post" action="https://moneshrey.in/contact#contact_form" accept-charset="UTF-8" target="_blank">
         <input type="hidden" name="form_type" value="customer"><input type="hidden" name="utf8" value="✓"><input type="hidden" name="contact[tags]" value="newsletter">
-        <input type="email" name="contact[email]" id="email" required placeholder="Email address" aria-label="Email address" autocomplete="email">
-        <button class="pill solid" type="submit">Subscribe</button>
+        <input type="email" name="contact[email]" id="email" required placeholder="Your email address" aria-label="Email address" autocomplete="email">
+        <button class="sub ui" type="submit">Subscribe <span aria-hidden="true">→</span></button>
       </form>
       <div class="ok" id="ok" role="status"></div>
     </div>
   </div>
   <div class="cols">
+    <div class="brand"><a class="flogo" href="/" aria-label="Monèshrey home"></a><p>Liquid matte lipsticks made for Indian skin tones — comfort, confidence &amp; compliments in one swipe.</p><a class="ig ui" href="${CFG.INSTAGRAM}">Instagram · @moneshreyy</a></div>
     <div><h4>Shop</h4><ul><li><a href="/shop">Shop all</a></li>${Object.entries(FAM).map(([k, v]) => `<li><a href="${url.fam(k)}">${v}</a></li>`).join('')}<li><a href="/trio">The Trio — 3 for ₹999</a></li></ul></div>
-    <div><h4>Discover</h4><ul><li><a href="/find-your-shade">Find your shade</a></li><li><a href="/about">Our story</a></li><li><a href="/#reviews">Reviews</a></li><li><a href="${CFG.INSTAGRAM}">Instagram</a></li></ul></div>
+    <div><h4>Discover</h4><ul><li><a href="/find-your-shade">Find your shade</a></li><li><a href="/about">Our story</a></li><li><a href="/#reviews">Reviews</a></li></ul></div>
     <div><h4>Help</h4><ul><li><a href="/contact">Contact us</a></li><li><a href="/help#track">Track order</a></li><li><a href="/help#shipping">Shipping</a></li><li><a href="/help#returns">Returns &amp; exchange</a></li><li><a href="/help#cancellation">Cancellation</a></li></ul></div>
-    <div><h4>Official</h4><ul><li><a href="/help#privacy">Privacy policy</a></li><li><a href="/help#terms">Terms &amp; conditions</a></li></ul></div>
   </div>
-  <div class="legal"><span>© 2026 Monèshrey Beauty</span><span>Made for Indian skin · Paraben free · Cruelty free</span></div>
+  <div class="legal"><span>© 2026 Monèshrey Beauty · Ghaziabad, India</span><span>Made for Indian skin · Paraben free · Cruelty free</span><span><a href="/help#privacy">Privacy</a> · <a href="/help#terms">Terms</a></span></div>
+  <div class="wm" aria-hidden="true"></div>
 </footer>`;
 const news = $('news');
 if (news) news.addEventListener('submit', () => { $('ok').textContent = 'You’re in — your 3 for ₹999 code is on its way.'; setTimeout(() => { $('email').value = ''; }, 0); });
