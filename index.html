@@ -534,20 +534,27 @@ drawTrio();
 
 /* reels — add a creator by adding one row: v = short preview file, p = video id, hd = HD file number, s = shade tagged, by = creator handle (optional) */
 const SH='https://cdn.shopify.com/s/files/1/0807/4677/4776/files/';
-const R=[
+const REAL=[
   {v:'reelUp_x835cedi7s1777361856174_short.mp4',p:'e55d4eb74e734ce098d5f32e588e6cba',hd:'82844859',s:'Shocking Pink',by:''},
   {v:'reelUp_qk055wvm2r1779668392039_short.mp4',p:'bee3068c50854aa0b6f4fb3a0067f5bc',hd:'84852369',s:'Pink Whisper',by:''},
   {v:'reelUp_uj4juvfjmvb1779668392038_short.mp4',p:'1673de170a4a46c8b2a9a242e560d50f',hd:'84852368',s:'Nude Eclipse',by:''},
   {v:'reelUp_kwjpog5re51779668269196_short.mp4',p:'a68ad3e129b645d7ac6310cf379b327c',hd:'84852288',s:'Bronze Flame',by:''},
-  {v:'reelUp_an1k12t48y1779668269192_short.mp4',p:'378d853df0fc442b87bfa28858651d37',hd:'84852287',s:'Miss Mauve',by:''}
+  {v:'reelUp_an1k12t48y1779668269192_short.mp4',p:'378d853df0fc442b87bfa28858651d37',hd:'84852287',s:'Miss Mauve',by:''},
+  {v:'reelUp_qjf6wzo6zfr1779668269196_short.mp4',p:'1ba620cfd3bf4937acce9eb7a19b967b',hd:'84852290',s:'Brown Theory',by:''},
+  {v:'reelUp_3rvaxth03491779668269193_short.mp4',p:'d4666e3edd494f6c9dca4b5b2b234d00',hd:'84852291',s:'Dusky Petal',by:''}
 ];
+/* DEMO FILL: every shade gets 3 reels. Rows marked demo:true reuse one of the 7 real videos as a stand-in —
+   replace each with that shade's real creator reel before launch (set v, p, hd, by and delete demo:true). */
+const PER=3,R=[];
+S.forEach(x=>{const own=REAL.filter(r=>r.s===x.n);let k=S.indexOf(x);while(own.length<PER){const src=REAL[k++%REAL.length];own.push({...src,s:x.n,demo:true})}own.slice(0,PER).forEach(r=>R.push(r))});
+for(let i=0;i<PER;i++)S.forEach((x,j)=>{const r=R[j*PER+i];r._o=i*S.length+j});R.sort((a,b)=>a._o-b._o);
 const sh=n=>S.find(x=>x.n===n)||S[0];
 const vsrc=r=>SH+r.v;const fsrc=r=>r.hd?`https://cdn.shopify.com/videos/c/vp/${r.p}/${r.p}.HD-720p-1.6Mbps-${r.hd}.mp4`:vsrc(r);const psrc=r=>SH+'preview_images/'+r.p+'.thumbnail.0000000000_600x.jpg';
 let rf='all',list=R;
 const drawFilt=()=>{
   const used=[...new Set(R.map(r=>r.s))];
   $('filt').innerHTML=`<button class="all" data-s="all" aria-pressed="${rf==='all'}">All <span>${R.length}</span></button>`+used.map(n=>`<button data-s="${n}" aria-pressed="${rf===n}"><i style="background:${sh(n).c}"></i>${n} <span>${R.filter(r=>r.s===n).length}</span></button>`).join('');
-  $('rCount').textContent=`${R.length} reels · real girls, real lips, unfiltered`;
+  $('rCount').textContent=`${R.length} reels · ${PER} for every shade · real girls, real lips`;
 };
 const drawReels=()=>{
   list=rf==='all'?R:R.filter(r=>r.s===rf);
