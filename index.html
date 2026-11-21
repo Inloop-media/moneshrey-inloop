@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Monèshrey Beauty — Liquid Matte Lipsticks for Indian Skin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@112,700;112,800;112,900&family=Inter:wght@400;500;600&family=Liter&display=swap" rel="stylesheet">
+<style>
+/*
+VOICE   quiet confidence — Rhode's restraint with Monèshrey's cheek
+IDEA    a vanity of rounded trays: every section sits in its own inset panel
+PICTURE campaign photography, big and cropped; a sticky lip try-on that changes per shade
+COLOUR  cream #FFFAF7 page, blush #FFDEF1 + warm sand #F4ECE7 panels, oxblood #761E0B ink
+TYPE    Archivo expanded heavy lowercase for names, Inter uppercase for UI, Liter for copy
+*/
+:root{
+  --cream:#FFFAF7; --sand:#F4ECE7; --blush:#FFDEF1; --ox:#761E0B; --ox-d:#4E1407;
+  --ink:#3A2A26; --mute:#8A7570; --line:rgba(118,30,11,.14);
+  --disp:"Archivo","Arial Black",sans-serif; --ui:"Inter",Helvetica,Arial,sans-serif; --body:"Liter","Inter",sans-serif;
+  --g:clamp(8px,1.1vw,14px); --r:14px;
+}
+*{box-sizing:border-box;min-width:0}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--cream);color:var(--ink);font:15px/1.6 var(--body);overflow-x:clip;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;cursor:pointer;background:none;border:0;padding:0}
+:focus-visible{outline:2px solid var(--ox);outline-offset:3px}
+.page{padding:0 var(--g) var(--g);display:grid;gap:var(--g)}
+.panel{border-radius:var(--r);overflow:hidden;position:relative}
+.ui{font:500 13px/1.3 var(--ui);text-transform:uppercase;letter-spacing:.02em}
+.disp{font-family:var(--disp);font-stretch:112%;font-weight:800;text-transform:lowercase;letter-spacing:-.045em;line-height:.92;color:var(--ox);margin:0}
+.pill{display:inline-flex;align-items:center;justify-content:center;height:38px;padding:0 22px;border-radius:40px;border:1px solid currentColor;font:500 13px/1 var(--ui);text-transform:uppercase;letter-spacing:.02em;transition:background .3s,color .3s,border-color .3s;white-space:nowrap}
+.pill:hover{background:var(--ox);border-color:var(--ox);color:var(--cream)}
+.pill.solid{background:var(--ox);border-color:var(--ox);color:var(--cream)}
+.pill.solid:hover{background:var(--ox-d);border-color:var(--ox-d)}
+.pill.light{color:#fff}
+.pill.light:hover{background:#fff;color:var(--ox);border-color:#fff}
+.pill[disabled]{opacity:.4;cursor:not-allowed}
+
+/* announcement */
+.ann{margin-top:var(--g);background:var(--blush);color:var(--ox);text-align:center;padding:11px 16px;border-radius:var(--r);overflow:hidden;white-space:nowrap}
+.ann span{transition:opacity .5s}
+
+/* hero */
+.hero{height:min(calc(100vh - 70px),860px);min-height:560px;display:grid;grid-template-columns:1.15fr 1fr;background:var(--ox-d)}
+.hero .im{position:relative;overflow:hidden}
+.hero .im img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.05);transition:transform 2.4s cubic-bezier(.2,.7,.2,1)}
+.hero.on .im img{transform:scale(1)}
+.hero .im1 img{object-position:93% 25%}
+.hero .im2 img{object-position:100% 50%}
+.hero::after{content:"";position:absolute;inset:auto 0 0 0;height:55%;background:linear-gradient(0deg,rgba(40,10,4,.62),rgba(40,10,4,0));pointer-events:none}
+.nav{position:absolute;z-index:5;top:0;left:0;right:0;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:20px clamp(18px,2.4vw,34px);color:#fff}
+.nav .l,.nav .r{display:flex;gap:clamp(18px,2.6vw,40px)}
+.nav .r{justify-content:flex-end}
+.nav a{position:relative}
+.nav a::after{content:"";position:absolute;left:0;right:0;bottom:-3px;height:1px;background:currentColor;transform:scaleX(0);transition:transform .3s}
+.nav a:hover::after{transform:scaleX(1)}
+.nav .logo img{height:30px;width:auto;filter:brightness(0) invert(1)}
+.nav .menu{display:none}
+.hero-txt{position:absolute;z-index:4;left:calc(53.5% + clamp(18px,2.4vw,34px));bottom:clamp(22px,3vw,40px);right:clamp(18px,2.4vw,34px);color:#fff;display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap}
+.hero-txt .k{margin:0 0 10px}
+.hero-txt h1{font-family:var(--ui);font-weight:400;font-size:clamp(22px,2.2vw,30px);line-height:1.2;letter-spacing:-.01em;margin:0 0 18px;max-width:560px}
+.hero-txt .big{font-family:var(--disp);font-stretch:112%;font-weight:900;text-transform:lowercase;letter-spacing:-.05em;font-size:clamp(56px,9vw,150px);line-height:.8;color:#fff;opacity:.95}
+
+/* sticky mini header */
+.mini{position:fixed;z-index:60;top:10px;left:50%;transform:translate(-50%,-90px);transition:transform .45s cubic-bezier(.2,.7,.2,1);background:rgba(255,250,247,.9);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-radius:40px;padding:8px 8px 8px 22px;display:flex;align-items:center;gap:22px;box-shadow:0 10px 30px -14px rgba(78,20,7,.35);color:var(--ox);white-space:nowrap}
+.mini.on{transform:translate(-50%,0)}
+.mini img{height:20px;width:auto}
+.mini .bag{display:inline-flex;align-items:center;gap:8px;height:36px;padding:0 16px;border-radius:30px;background:var(--ox);color:var(--cream)}
+
+/* product rail */
+.rail-wrap{background:var(--sand);padding:clamp(16px,2vw,26px) 0 clamp(16px,2vw,24px)}
+.rail-head{display:flex;justify-content:space-between;align-items:end;gap:12px;padding:0 clamp(16px,2vw,26px) 16px;color:var(--ox)}
+.rail-head h2{font-size:clamp(28px,3vw,40px)}
+.rail{display:grid;grid-auto-flow:column;grid-auto-columns:clamp(250px,26vw,370px);gap:var(--g);overflow-x:auto;scroll-snap-type:x mandatory;padding:0 clamp(16px,2vw,26px);scrollbar-width:none;cursor:grab}
+.rail::-webkit-scrollbar{display:none}
+.rail.drag{cursor:grabbing;scroll-snap-type:none}
+.pc{scroll-snap-align:start;background:var(--cream);border-radius:var(--r);overflow:hidden;padding:20px;display:flex;flex-direction:column;height:clamp(400px,36vw,480px);position:relative;user-select:none}
+.pc .top{display:flex;justify-content:space-between;align-items:start;gap:10px}
+.pc .nm{font-size:clamp(26px,2.4vw,34px)}
+.pc .tag{flex:none;font:600 10.5px/1 var(--ui);text-transform:uppercase;letter-spacing:.03em;background:var(--ox);color:var(--cream);border-radius:20px;padding:6px 9px}
+.pc .stage{flex:1;position:relative;margin:12px 0 14px;min-height:200px;border-radius:10px;overflow:hidden;isolation:isolate;background:var(--cream)}
+.pc .stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply;transition:opacity .5s,transform .8s cubic-bezier(.2,.7,.2,1);pointer-events:none}
+.pc .stage img.lip{object-fit:cover;object-position:50% 35%;mix-blend-mode:normal;opacity:0;transform:scale(1.42);transform-origin:50% 35%}
+.pc:hover .stage img.lip{opacity:1;transform:scale(1.32)}
+.pc:hover .stage img:not(.lip){opacity:0}
+.pc .bot{display:flex;justify-content:space-between;align-items:end;gap:10px}
+.pc .bot b{display:block;font:600 13px/1.3 var(--ui);text-transform:uppercase;letter-spacing:.02em;color:var(--ox)}
+.pc .bot small{font:13px/1.3 var(--ui);color:var(--mute)}
+.pc .pr{font:600 13px var(--ui);color:var(--ox);text-align:right;white-space:nowrap}
+.pc .pr s{display:block;font-weight:400;color:var(--mute)}
+.pc .qa{position:absolute;left:20px;right:20px;bottom:20px;z-index:3;height:42px;border-radius:40px;background:var(--ox);color:var(--cream);font:500 13px var(--ui);text-transform:uppercase;letter-spacing:.02em;opacity:0;transform:translateY(8px);transition:.3s}
+.pc .bot{transition:opacity .3s}
+.pc:hover .qa,.pc .qa:focus-visible{opacity:1;transform:none}
+@media (hover:hover) and (min-width:901px){.pc:hover .bot{opacity:0}}
+.swipe{position:absolute;z-index:3;left:calc(clamp(16px,2vw,26px) + clamp(250px,26vw,370px) + var(--g)/2);top:52%;transform:translate(-50%,-50%);width:66px;height:66px;border-radius:50%;background:var(--cream);color:var(--ox);display:grid;place-items:center;font:600 12px var(--ui);box-shadow:0 8px 24px -10px rgba(78,20,7,.35);transition:opacity .4s;pointer-events:none}
+.rail-wrap.moved .swipe{opacity:0}
+/* 4-up product grid on desktop, swipe rail on phones */
+@media (min-width:901px){.rail.four{grid-auto-flow:row;grid-template-columns:repeat(4,minmax(0,1fr));overflow:visible;cursor:auto;scroll-snap-type:none}.rail-wrap .bar,.rail-wrap .swipe{display:none}.rail.four .pc{height:clamp(400px,34vw,470px)}}
+.bar{height:2px;background:var(--line);margin:20px clamp(16px,2vw,26px) 0;border-radius:2px;overflow:hidden}
+.bar i{display:block;height:100%;width:30%;background:var(--ox);transition:transform .15s linear}
+
+/* split banners */
+.split{display:grid;grid-template-columns:1fr 1fr;min-height:min(78vh,720px)}
+.split .txt{background:var(--sand);padding:clamp(24px,3vw,44px);display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-start;gap:18px}
+.split.blush .txt{background:var(--blush)}
+.split .txt h2{font-size:clamp(40px,4.6vw,72px)}
+.split .txt p{max-width:440px;margin:0;color:var(--ink);font-size:16px}
+.split .pic{position:relative;overflow:hidden}
+.split .pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.6s cubic-bezier(.2,.7,.2,1)}
+.split:hover .pic img{transform:scale(1.03)}
+.split.rev .pic{order:-1}
+.facts{display:flex;flex-wrap:wrap;gap:8px}
+.facts span{font:500 12px/1 var(--ui);text-transform:uppercase;letter-spacing:.02em;border:1px solid var(--line);color:var(--ox);border-radius:30px;padding:9px 13px;background:rgba(255,250,247,.6)}
+
+/* try-on */
+.try{display:grid;grid-template-columns:1fr 1fr;gap:var(--g);align-items:start}
+.try .lipcol{position:sticky;top:var(--g);height:calc(100vh - var(--g)*2);max-height:860px;border-radius:var(--r);overflow:hidden;background:#cfa996}
+.try .lipcol img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 38%;transform:scale(1.25);transform-origin:50% 38%;transition:opacity .55s}
+.try .lipcol .cap{position:absolute;left:20px;bottom:20px;right:20px;display:flex;justify-content:space-between;align-items:end;gap:12px;color:#fff;z-index:2}
+.try .lipcol .cap .n{font-family:var(--disp);font-stretch:112%;font-weight:800;text-transform:lowercase;letter-spacing:-.045em;font-size:clamp(34px,3.6vw,54px);line-height:.9}
+.try .lipcol .cnt{font-family:var(--disp);font-stretch:112%;font-weight:800;font-size:clamp(34px,3.6vw,54px);line-height:.9;letter-spacing:-.04em}
+.try .lipcol::after{content:"";position:absolute;inset:auto 0 0 0;height:40%;background:linear-gradient(0deg,rgba(40,10,4,.5),transparent)}
+.list{background:var(--sand);border-radius:var(--r);padding:clamp(20px,2.6vw,36px)}
+.list .hd{display:flex;justify-content:space-between;align-items:end;gap:16px;margin-bottom:22px}
+.list .hd h2{font-size:clamp(36px,3.8vw,58px)}
+.list .hd p{margin:0;color:var(--mute);max-width:230px;font-size:14px}
+.row{display:grid;grid-template-columns:86px 1fr auto;gap:18px;align-items:center;padding:14px 0;border-top:1px solid var(--line);cursor:pointer;transition:padding .3s,background .3s}
+.row:last-child{border-bottom:1px solid var(--line)}
+.row .th{width:86px;height:86px;border-radius:10px;background:var(--cream);overflow:hidden;position:relative}
+.row .th img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply}
+.row .nm{font-family:var(--disp);font-stretch:112%;font-weight:800;text-transform:lowercase;letter-spacing:-.04em;font-size:22px;line-height:1;color:var(--ox);display:flex;align-items:center;gap:10px}
+.row .nm i{width:14px;height:14px;border-radius:50%;flex:none;box-shadow:inset 0 -3px 5px rgba(0,0,0,.2)}
+.row small{display:block;font:13px/1.4 var(--ui);color:var(--mute);margin-top:6px}
+.row .r{display:flex;align-items:center;gap:14px}
+.row .p{font:600 13px var(--ui);color:var(--ox);white-space:nowrap}
+.row .p s{font-weight:400;color:var(--mute);margin-left:6px}
+.row.act{padding-left:12px;background:linear-gradient(90deg,rgba(255,222,241,.9),rgba(255,222,241,0))}
+.row .pill{height:34px;padding:0 16px}
+
+/* trio */
+.trio-c{display:flex;flex-direction:column;gap:16px;align-items:flex-start}
+.slots{display:flex;gap:10px}
+.slot{width:62px;height:62px;border-radius:50%;border:1.5px dashed rgba(118,30,11,.4);display:grid;place-items:center;font:600 12px var(--ui);color:var(--ox);position:relative}
+.slot.full{border:2px solid var(--cream);box-shadow:0 0 0 1px var(--ox),inset 0 -8px 12px rgba(0,0,0,.22)}
+.slot.full::after{content:"×";position:absolute;top:-5px;right:-5px;width:20px;height:20px;border-radius:50%;background:var(--ox);color:var(--cream);font:600 13px/20px var(--ui);text-align:center}
+.chips{display:flex;flex-wrap:wrap;gap:6px;max-width:520px}
+.chip{height:34px;border-radius:30px;border:1px solid var(--line);background:rgba(255,250,247,.7);padding:0 12px 0 6px;display:inline-flex;align-items:center;gap:7px;font:500 12px var(--ui);text-transform:uppercase;letter-spacing:.02em;color:var(--ox);transition:.25s}
+.chip i{width:22px;height:22px;border-radius:50%}
+.chip:hover{border-color:var(--ox);background:var(--cream)}
+.sum{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.sum b{font-family:var(--disp);font-stretch:112%;font-weight:800;font-size:44px;letter-spacing:-.04em;line-height:1;color:var(--ox)}
+.sum s{font:14px var(--ui);color:var(--mute);margin-left:6px;letter-spacing:0}
+
+/* reels */
+.reels{background:var(--sand);padding:clamp(16px,2vw,26px)}
+.reels .hd{display:flex;justify-content:space-between;align-items:end;gap:16px;margin-bottom:14px;flex-wrap:wrap}
+.reels .hd h2{font-size:clamp(28px,3vw,40px)}
+.reels .hd p{margin:6px 0 0;font:13px var(--ui);color:var(--mute)}
+.filt{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;margin:0 0 16px;padding-bottom:2px}
+.filt::-webkit-scrollbar{display:none}
+.filt button{flex:none;height:34px;border-radius:30px;border:1px solid var(--line);background:rgba(255,250,247,.7);padding:0 13px 0 7px;display:inline-flex;align-items:center;gap:7px;font:500 12px var(--ui);text-transform:uppercase;letter-spacing:.02em;color:var(--ox);transition:.25s}
+.filt button i{width:20px;height:20px;border-radius:50%}
+.filt button.all{padding:0 14px}
+.filt button[aria-pressed=true]{background:var(--ox);border-color:var(--ox);color:var(--cream)}
+.filt button span{opacity:.6;font-weight:400}
+.reels .rail{padding:0;grid-auto-columns:clamp(200px,18vw,260px)}
+.reel{position:relative;aspect-ratio:9/16;border-radius:12px;overflow:hidden;background:#2a1712;scroll-snap-align:start;cursor:pointer}
+.reel video,.reel .po{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.reel .po{transition:opacity .4s}
+.reel.playing .po{opacity:0}
+.reel::after{content:"";position:absolute;inset:auto 0 0 0;height:45%;background:linear-gradient(0deg,rgba(30,8,3,.7),transparent);pointer-events:none}
+.reel .by{position:absolute;z-index:2;top:10px;left:10px;font:600 11.5px var(--ui);color:#fff;background:rgba(30,8,3,.35);backdrop-filter:blur(8px);border-radius:20px;padding:6px 10px}
+.reel .by:empty{display:none}
+.reel .pl{position:absolute;z-index:2;top:10px;right:10px;width:30px;height:30px;border-radius:50%;background:rgba(30,8,3,.35);backdrop-filter:blur(8px);display:grid;place-items:center;color:#fff}
+.reel .pl svg{width:12px;height:12px}
+.reel .prod{position:absolute;z-index:2;left:8px;right:8px;bottom:8px;background:rgba(255,250,247,.94);border-radius:10px;padding:6px;display:flex;align-items:center;gap:8px}
+.reel .prod img{width:40px;height:40px;border-radius:6px;object-fit:contain;background:#fff;flex:none}
+.reel .prod div{flex:1;min-width:0}
+.reel .prod b{display:block;font:600 11.5px/1.2 var(--ui);text-transform:uppercase;letter-spacing:.02em;color:var(--ox);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.reel .prod small{font:12px var(--ui);color:var(--mute)}
+.reel .prod small s{margin-left:4px}
+.reel .prod button{flex:none;width:32px;height:32px;border-radius:50%;background:var(--ox);color:var(--cream);font:400 20px/1 var(--ui);display:grid;place-items:center}
+.reels .ft{display:flex;align-items:center;gap:16px;margin-top:16px}
+.reels .ft .bar{flex:1;margin:0}
+/* viewer */
+.vw{position:fixed;inset:0;z-index:100;background:rgba(25,8,4,.92);backdrop-filter:blur(10px);display:none;align-items:center;justify-content:center;gap:clamp(10px,3vw,40px)}
+.vw.on{display:flex}
+.vw .stage{position:relative;height:min(88vh,820px);aspect-ratio:9/16;max-width:calc(100vw - 24px);border-radius:16px;overflow:hidden;background:#000}
+.vw video{width:100%;height:100%;object-fit:cover;display:block}
+.vw .bars{position:absolute;top:10px;left:10px;right:10px;display:flex;gap:4px;z-index:3}
+.vw .bars i{flex:1;height:2.5px;border-radius:2px;background:rgba(255,255,255,.35);overflow:hidden}
+.vw .bars i b{display:block;height:100%;width:0;background:#fff}
+.vw .bars i.done b{width:100%}
+.vw .top{position:absolute;z-index:3;top:22px;left:12px;right:12px;display:flex;justify-content:space-between;align-items:center;color:#fff;font:600 13px var(--ui)}
+.vw .top button{width:36px;height:36px;border-radius:50%;background:rgba(0,0,0,.35);display:grid;place-items:center;color:#fff}
+.vw .top button svg{width:16px;height:16px}
+.vw .top .ctl{display:flex;gap:8px}
+.vw .card{position:absolute;z-index:3;left:12px;right:12px;bottom:12px;background:var(--cream);border-radius:12px;padding:10px;display:flex;align-items:center;gap:10px}
+.vw .card img{width:56px;height:56px;border-radius:8px;object-fit:contain;background:#fff}
+.vw .card div{flex:1;min-width:0}
+.vw .card b{display:block;font:600 13px var(--ui);text-transform:uppercase;letter-spacing:.02em;color:var(--ox)}
+.vw .card small{font:13px var(--ui);color:var(--mute)}
+.vw .nav-b{width:48px;height:48px;border-radius:50%;border:1px solid rgba(255,255,255,.4);color:#fff;display:grid;place-items:center;flex:none}
+.vw .nav-b:hover{background:#fff;color:var(--ox)}
+.vw .nav-b svg{width:16px;height:16px}
+.vw .tapL,.vw .tapR{position:absolute;top:70px;bottom:90px;width:35%;z-index:2}
+.vw .tapL{left:0}.vw .tapR{right:0}
+@media (max-width:700px){.vw .nav-b{display:none}.vw .stage{height:100%;max-height:100dvh;width:100vw;max-width:none;border-radius:0;aspect-ratio:auto}.reels .rail{grid-auto-columns:46vw}}
+/* values / faq */
+.vals{display:grid;grid-template-columns:1.25fr 1fr;gap:var(--g)}
+.vals .box{background:var(--sand);border-radius:var(--r);padding:clamp(22px,3vw,44px)}
+.vals .lead{font:400 clamp(22px,2.2vw,32px)/1.25 var(--ui);letter-spacing:-.01em;color:var(--ox);margin:0 0 clamp(26px,3vw,44px);max-width:640px}
+.vals .lead b{font-weight:600}
+details{border-top:1px solid var(--line)}
+details:last-child{border-bottom:1px solid var(--line)}
+summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:17px 0;font:600 15px var(--ui);color:var(--ox)}
+summary::-webkit-details-marker{display:none}
+summary span{font:400 22px/1 var(--ui);transition:transform .3s}
+details[open] summary span{transform:rotate(45deg)}
+details p{margin:0 0 18px;color:var(--ink);max-width:560px}
+.vals .pic{border-radius:var(--r);overflow:hidden;position:relative;min-height:420px}
+.vals .pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.vals .pic .ui{position:absolute;left:20px;bottom:20px;color:#fff;background:rgba(78,20,7,.5);backdrop-filter:blur(8px);padding:9px 14px;border-radius:30px}
+
+/* footer */
+.wordmark{background:var(--blush);padding:clamp(22px,3vw,44px) clamp(16px,2vw,28px)}
+.wordmark img{width:100%;height:auto}
+.foot{background:var(--sand);padding:clamp(22px,3vw,40px) clamp(16px,2vw,28px) 18px;color:var(--ox)}
+.news{display:grid;grid-template-columns:1fr 1.2fr;gap:24px;align-items:end;padding-bottom:30px;border-bottom:1px solid var(--line)}
+.news p{margin:0 0 4px;font-size:14px;color:var(--ink)}
+.news h3{font-size:clamp(28px,3vw,42px);margin-bottom:10px}
+.news form{display:flex;background:var(--cream);border-radius:40px;padding:5px}
+.news input{flex:1;border:0;background:none;padding:0 18px;font:16px var(--ui);color:var(--ink);height:46px;min-width:0}
+.news input:focus{outline:none}
+.news .ok{font:13px var(--ui);margin-top:10px;min-height:1.3em}
+.cols{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;padding:30px 0}
+.cols h4{margin:0 0 14px;font:600 12px var(--ui);text-transform:uppercase;letter-spacing:.03em}
+.cols ul{list-style:none;margin:0;padding:0;display:grid;gap:9px;font:14px var(--ui);color:var(--ink)}
+.cols a:hover{color:var(--ox);text-decoration:underline;text-underline-offset:3px}
+.legal{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:16px;font:12px var(--ui);color:var(--mute)}
+
+/* toast */
+.toast{position:fixed;z-index:80;right:16px;bottom:16px;background:var(--cream);color:var(--ox);border-radius:var(--r);padding:12px 18px 12px 12px;display:flex;gap:12px;align-items:center;box-shadow:0 18px 40px -16px rgba(78,20,7,.45);transform:translateY(150%);transition:transform .45s cubic-bezier(.2,.7,.2,1);max-width:min(360px,calc(100vw - 32px))}
+.toast.on{transform:none}
+.toast img{width:52px;height:52px;border-radius:8px;object-fit:contain;background:var(--sand);mix-blend-mode:multiply}
+.toast b{display:block;font:600 12px var(--ui);text-transform:uppercase;letter-spacing:.02em}
+.toast small{font:13px var(--ui);color:var(--mute)}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(24px);transition:opacity .9s,transform .9s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+
+@media (max-width:900px){
+  .hero{grid-template-columns:1fr;height:auto;aspect-ratio:3/4.1;min-height:0;max-height:88vh}
+  .hero .im1{display:none}
+  .hero .im2 img{object-position:74% 50%}
+  .nav{grid-template-columns:auto 1fr auto}
+  .nav .l a,.nav .r a:not(.bagl){display:none}
+  .nav .menu{display:block}
+  .nav .logo{justify-self:center}
+  .split,.try,.vals,.news{grid-template-columns:1fr}
+  .split .pic{min-height:0;aspect-ratio:1/1.05;order:-1}
+  #s1img{object-position:100% 30%!important}
+  .try .lipcol{position:relative;top:0;height:auto;aspect-ratio:1}
+  .cols{grid-template-columns:1fr 1fr}
+  .pc .qa{opacity:1;transform:none;position:static;margin-top:12px}
+  .pc{aspect-ratio:auto;min-height:430px}
+  .swipe{display:none}
+  .hero-txt{left:clamp(18px,2.4vw,34px)}
+  .mini a:not(.bag){display:none}
+}
+@media (max-width:520px){
+  .row{grid-template-columns:64px 1fr;gap:12px}
+  .row .th{width:64px;height:64px}
+  .row .r{grid-column:2;justify-content:space-between}
+  .list .hd{flex-direction:column;align-items:start}
+  .rail-head{flex-direction:column;align-items:start}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{transition:none!important;animation:none!important}
+  .rv{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="ann ui"><span id="ann">Summertime offer — any 3 shades for ₹999</span></div>
+
+  <header class="panel hero" id="hero">
+    <nav class="nav ui">
+      <div class="l"><button class="menu ui" aria-label="Menu">Menu</button><a href="#shop">Shop</a><a href="#trio">Offers</a><a href="#about">About</a></div>
+      <a class="logo" href="#" aria-label="Monèshrey home"><img id="logo1" alt="Monèshrey Beauty"></a>
+      <div class="r"><a href="#try">Find your shade</a><a href="#">Account</a><a class="bagl" href="#">Bag (<span class="bc">0</span>)</a></div>
+    </nav>
+    <div class="im im1"><img id="h1img" alt="Model holding a Monèshrey liquid matte lipstick"></div>
+    <div class="im im2"><img id="h2img" alt="Monèshrey lipstick on pink velvet"></div>
+    <div class="hero-txt">
+      <div>
+        <p class="k ui">Liquid matte lipstick · 8 shades</p>
+        <h1>Matte that survives chai, chaos &amp; bad decisions. Made for Indian skin tones.</h1>
+        <a class="pill light" href="#shop">Shop now</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="mini ui" id="mini">
+    <img id="logo2" alt="Monèshrey">
+    <a href="#shop">Shop</a><a href="#try">Shades</a><a href="#trio">3 for ₹999</a>
+    <a class="bag" href="#">Bag <span class="bc">0</span></a>
+  </div>
+
+  <section class="panel rail-wrap" id="shop">
+    <div class="rail-head">
+      <h2 class="disp">the line-up</h2>
+      <span class="ui">Summer sale · up to 20% off</span>
+    </div>
+    <div class="rail four" id="rail"></div>
+    <div class="bar"><i id="railBar"></i></div>
+  </section>
+
+  <section class="panel split" id="about">
+    <div class="txt rv">
+      <span class="ui" style="color:var(--ox)">made for indian skin</span>
+      <h2 class="disp">shades that get brown girls</h2>
+      <p>Not copied from Western shade charts. Every Monèshrey shade is built around Indian undertones — no chalky nudes, no weird orange.</p>
+      <div class="facts"><span>Paraben free</span><span>Cruelty free</span><span>Soft matte</span><span>Waterproof</span></div>
+      <a class="pill" href="#try">Find your shade</a>
+    </div>
+    <div class="pic"><img id="s1img" alt="Model wearing Monèshrey lipstick" style="object-position:92% 30%"></div>
+  </section>
+
+  <section class="try" id="try">
+    <div class="lipcol" id="lipcol">
+      <img id="lipA" alt=""><img id="lipB" alt="" style="opacity:0">
+      <div class="cap"><span class="n" id="capN"></span><span class="cnt" id="capC"></span></div>
+    </div>
+    <div class="list">
+      <div class="hd">
+        <h2 class="disp">try every shade</h2>
+        <p>Swatched on real brown lips. Hover or tap a shade to see it on.</p>
+      </div>
+      <div id="rows"></div>
+    </div>
+  </section>
+
+  <section class="panel rail-wrap" id="shop2">
+    <div class="rail-head">
+      <h2 class="disp">more shades to love</h2>
+      <span class="ui">Summer sale · up to 20% off</span>
+    </div>
+    <div class="rail four" id="rail2"></div>
+    <div class="bar"><i id="railBar2"></i></div>
+  </section>
+
+  <section class="panel split blush rev" id="trio">
+    <div class="txt">
+      <span class="ui" style="color:var(--ox)">summertime offer</span>
+      <h2 class="disp">any 3 shades, ₹999</h2>
+      <p>A nude for work, a brown for dinner, a pink for the plot twist. Build your trio below.</p>
+      <div class="trio-c">
+        <div class="slots" id="slots"></div>
+        <div class="chips" id="chips"></div>
+        <div class="sum"><b>₹999<s>₹1,950</s></b><button class="pill solid" id="trioAdd" disabled>Pick 3 shades</button></div>
+      </div>
+    </div>
+    <div class="pic"><img id="s2img" alt="Monèshrey lipsticks arranged in a heart"></div>
+  </section>
+
+  <section class="panel split">
+    <div class="txt rv">
+      <span class="ui" style="color:var(--ox)">the formula</span>
+      <h2 class="disp">matte, minus the trauma</h2>
+      <p>Lightweight, comfy and non-crusty. Transfer-resistant, waterproof and Delhi-heat approved — through coffee dates, weddings, crying, gossip and late-night fries.</p>
+      <a class="pill" href="#shop">Shop all shades</a>
+    </div>
+    <div class="pic"><img id="s3img" alt="Monèshrey lipstick with lip drip on pink" style="object-position:100% 40%"></div>
+  </section>
+
+  <section class="panel reels" id="irl">
+    <div class="hd">
+      <div><h2 class="disp">monèshrey irl</h2><p id="rCount"></p></div>
+      <a class="pill" href="https://www.instagram.com/moneshreyy/">Find us on Instagram</a>
+    </div>
+    <div class="filt" id="filt" role="group" aria-label="Filter reels by shade"></div>
+    <div class="rail" id="reelRail"></div>
+    <div class="ft"><div class="bar"><i id="reelBar"></i></div>
+      <button class="arr" id="uL" aria-label="Previous"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M9 2 4 7l5 5"/></svg></button>
+      <button class="arr" id="uR" aria-label="Next"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m5 2 5 5-5 5"/></svg></button>
+    </div>
+  </section>
+
+  <section class="vals">
+    <div class="box">
+      <p class="lead">To make <b>matte that feels like nothing</b> and looks like everything — on Indian skin, in Indian weather, for real Indian days.</p>
+      <div id="faq"></div>
+    </div>
+    <div class="pic"><img id="s4img" alt="Monèshrey lipsticks on a game of noughts and crosses"><span class="ui">good lips change everything</span></div>
+  </section>
+
+  <section class="panel wordmark" aria-hidden="true"><img id="logo3" alt=""></section>
+
+  <footer class="panel foot">
+    <div class="news">
+      <div><h3 class="disp">join the list</h3><p>Sign up to unlock any 3 shades for ₹999, plus first dibs on new drops.</p></div>
+      <div>
+        <form id="news"><input type="email" id="email" required placeholder="Email address" aria-label="Email address"><button class="pill solid" type="submit">Subscribe</button></form>
+        <div class="ok" id="ok" role="status"></div>
+      </div>
+    </div>
+    <div class="cols">
+      <div><h4>Shop</h4><ul><li><a href="https://moneshrey.in/collections/all">Shop all</a></li><li><a href="https://moneshrey.in/pages/offers-page">Offers</a></li><li><a href="#try">Find your shade</a></li></ul></div>
+      <div><h4>About</h4><ul><li><a href="https://moneshrey.in/pages/contact">Our story</a></li><li><a href="https://www.instagram.com/moneshreyy/">Instagram</a></li></ul></div>
+      <div><h4>Help</h4><ul><li><a href="https://moneshrey.in/pages/shipping-policy">Shipping</a></li><li><a href="https://moneshrey.in/pages/return-exchange-policy">Returns &amp; exchange</a></li><li><a href="https://moneshrey.in/pages/order-cancellation-policy">Cancellation</a></li><li><a href="https://moneshrey.in/pages/contact-us">Contact us</a></li></ul></div>
+      <div><h4>Official</h4><ul><li><a href="https://moneshrey.in/pages/privacy-policy">Privacy policy</a></li><li><a href="https://moneshrey.in/pages/terms-conditions">Terms &amp; conditions</a></li></ul></div>
+    </div>
+    <div class="legal"><span>© 2026 Monèshrey Beauty</span><span>Made for Indian skin · Paraben free · Cruelty free</span></div>
+  </footer>
+</div>
+
+<div class="toast" id="toast" role="status"><img id="tImg" alt=""><div><b id="tT"></b><small id="tS"></small></div></div>
+<div class="vw" id="vw" role="dialog" aria-modal="true" aria-label="Reel viewer">
+  <button class="nav-b" id="vPrev" aria-label="Previous reel"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M9 2 4 7l5 5"/></svg></button>
+  <div class="stage">
+    <div class="bars" id="vBars"></div>
+    <div class="top"><span id="vBy"></span><div class="ctl">
+      <button id="vMute" aria-label="Unmute"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M2 6h3l4-3v10L5 10H2z"/><path id="vMuteX" d="m11 6 4 4m0-4-4 4"/></svg></button>
+      <button id="vClose" aria-label="Close"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m3 3 10 10M13 3 3 13"/></svg></button>
+    </div></div>
+    <video id="vVid" playsinline muted></video>
+    <button class="tapL" id="vTapL" aria-label="Previous reel"></button><button class="tapR" id="vTapR" aria-label="Next reel"></button>
+    <div class="card"><img id="vImg" alt=""><div><b id="vName"></b><small id="vTone"></small></div><button class="pill solid" id="vAdd">Add — ₹520</button></div>
+  </div>
+  <button class="nav-b" id="vNext" aria-label="Next reel"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m5 2 5 5-5 5"/></svg></button>
+</div>
+
+<script>
+{
+const B='https://moneshrey.in/cdn/shop/files/';
+const u=(f,w)=>B+f+'?width='+w;
+const $=id=>document.getElementById(id);
+const S=[
+  {n:'Nude Eclipse',c:'#9A5A5E',t:'Mauve nude',tag:'Bestseller',p:'Gulaal02_2.jpg',l:'GulaalPost_jpg.jpg'},
+  {n:'Pink Whisper',c:'#B44E3C',t:'Warm coral rose',tag:'-20%',p:'Begum_001_1.jpg',l:'BegumPost_jpg.jpg'},
+  {n:'Bronze Flame',c:'#7C3A2E',t:'Deep bronze brown',tag:'-20%',p:'Kohinoor01.jpg',l:'KohinoorPost_jpg.jpg'},
+  {n:'Brown Theory',c:'#95503A',t:'Terracotta brown',tag:'-20%',p:'Noor.jpg',l:'NoorPost_jpg.jpg'},
+  {n:'Miss Mauve',c:'#8C5B57',t:'Smoky mauve',tag:'-20%',p:'Mauv-E-Mehfil01_f8ea878e-600b-4dea-8051-3652fa8e121b.jpg',l:'Mauv-E-MehfilPost_jpg.jpg'},
+  {n:'Dusky Petal',c:'#C14F40',t:'Rosy red',tag:'-20%',p:'Meher01.jpg',l:'MeherPost_jpg.jpg'},
+  {n:'Chocolate Obsessed',c:'#8A2F27',t:'Brick chocolate',tag:'-20%',p:'Sanjh01.jpg',l:'SaanjhPost_jpg.jpg'},
+  {n:'Shocking Pink',c:'#B4405A',t:'Berry pink',tag:'-20%',p:'PinkPatakha01_80a5a12f-127f-4a59-8359-d8fbb74e505b.jpg',l:'PinkPatakhaPost_jpg.jpg'}
+];
+const LOGO='Untitled_design_8_1c9aa3f1-eaa7-41b4-b663-16e691669947.png';
+$('logo1').src=$('logo2').src=u(LOGO,500);$('logo3').src=u(LOGO,2400);
+$('h1img').src=u('Matte_that_survives_chai_chaos_bad_decisions._3.png',3000);
+$('h2img').src=u('Matte_that_survives_chai_chaos_bad_decisions._1.png',3000);
+$('s1img').src=u('Matte_that_survives_chai_chaos_bad_decisions._3.png',3000);
+$('s2img').src=u('Untitled_design_9_42429c79-6579-46d5-a47d-b929c391fe74.png',1200);
+$('s3img').src=u('Matte_that_survives_chai_chaos_bad_decisions._2.png',3000);
+$('s4img').src=u('2.png',1100);
+requestAnimationFrame(()=>$('hero').classList.add('on'));
+
+/* announcement rotate */
+const ann=['Summertime offer — any 3 shades for ₹999','Summer sale — up to 20% off every shade','Made for Indian skin · Paraben free · Cruelty free'];let ai=0;
+setInterval(()=>{const a=$('ann');a.style.opacity=0;setTimeout(()=>{ai=(ai+1)%ann.length;a.textContent=ann[ai];a.style.opacity=1},500)},4000);
+
+/* bag + toast */
+let bag=0,tt;
+const note=(title,sub,img)=>{$('tT').textContent=title;$('tS').textContent=sub;$('tImg').src=img;$('toast').classList.add('on');clearTimeout(tt);tt=setTimeout(()=>$('toast').classList.remove('on'),2600)};
+const add=(n,title,sub,img)=>{bag+=n;document.querySelectorAll('.bc').forEach(e=>e.textContent=bag);note(title,sub,img)};
+
+/* product grids: first 4 shades up top, last 4 after the try-on */
+const card=(s,i)=>`
+<article class="pc">
+  <div class="top"><h3 class="disp nm">${s.n}</h3><span class="tag">${s.tag}</span></div>
+  <div class="stage"><img src="${u(s.p,700)}" alt="${s.n} liquid matte lipstick" draggable="false" loading="lazy"><img class="lip" src="${u(s.l,700)}" alt="" draggable="false" loading="lazy"></div>
+  <div class="bot"><div><b>${s.n}</b><small>${s.t}</small></div><div class="pr">₹520<s>₹650</s></div></div>
+  <button class="qa" data-i="${i}">Quick add — ₹520</button>
+</article>`;
+$('rail').innerHTML=S.slice(0,4).map((s,i)=>card(s,i)).join('');
+$('rail2').innerHTML=S.slice(4).map((s,i)=>card(s,i+4)).join('');
+const qa=e=>{const b=e.target.closest('.qa');if(b){const s=S[+b.dataset.i];add(1,s.n,'Added to bag · ₹520',u(s.p,200))}};
+$('rail').addEventListener('click',qa);$('rail2').addEventListener('click',qa);
+
+/* drag-to-scroll + progress */
+const dragify=(el,bar,wrap)=>{
+  let down=false,x0=0,s0=0,moved=0;
+  el.addEventListener('pointerdown',e=>{if(e.pointerType!=='mouse')return;down=true;moved=0;x0=e.clientX;s0=el.scrollLeft;el.classList.add('drag')});
+  addEventListener('pointermove',e=>{if(!down)return;const dx=e.clientX-x0;moved=Math.abs(dx);el.scrollLeft=s0-dx});
+  addEventListener('pointerup',()=>{if(!down)return;down=false;el.classList.remove('drag')});
+  el.addEventListener('click',e=>{if(moved>6){e.stopPropagation();e.preventDefault()}},true);
+  const upd=()=>{const m=el.scrollWidth-el.clientWidth;const vis=Math.min(1,el.clientWidth/el.scrollWidth);bar.style.width=(vis*100)+'%';bar.style.transform=`translateX(${m>0?(el.scrollLeft/m)*(1/vis-1)*100:0}%)`;if(wrap&&el.scrollLeft>20)wrap.classList.add('moved')};
+  el.addEventListener('scroll',upd,{passive:true});addEventListener('resize',upd);upd();
+};
+dragify($('rail'),$('railBar'),$('shop'));dragify($('rail2'),$('railBar2'),$('shop2'));
+
+/* try-on list */
+let cur=-1,front='lipA';
+const show=i=>{
+  if(i===cur)return;cur=i;const s=S[i];
+  const back=front==='lipA'?'lipB':'lipA',im=$(back);
+  im.onload=()=>{im.style.opacity=1;$(front).style.opacity=0;front=back};
+  im.src=u(s.l,1100);im.alt=s.n+' on lips';if(im.complete&&im.naturalWidth)im.onload();
+  $('capN').textContent=s.n.toLowerCase();$('capC').textContent=(i+1)+'/'+S.length;
+  document.querySelectorAll('.row').forEach((r,j)=>r.classList.toggle('act',j===i));
+};
+$('rows').innerHTML=S.map((s,i)=>`
+<div class="row" data-i="${i}" tabindex="0" role="button" aria-label="Show ${s.n}">
+  <div class="th"><img src="${u(s.p,240)}" alt="" loading="lazy"></div>
+  <div><div class="nm"><i style="background:${s.c}"></i>${s.n}</div><small>${s.t}</small></div>
+  <div class="r"><span class="p">₹520<s>₹650</s></span><button class="pill add" data-i="${i}">Add</button></div>
+</div>`).join('');
+const rows=$('rows');
+rows.addEventListener('mouseover',e=>{const r=e.target.closest('.row');if(r)show(+r.dataset.i)});
+rows.addEventListener('click',e=>{const b=e.target.closest('.add');if(b){const s=S[+b.dataset.i];add(1,s.n,'Added to bag · ₹520',u(s.p,200));return}const r=e.target.closest('.row');if(r)show(+r.dataset.i)});
+rows.addEventListener('keydown',e=>{const r=e.target.closest('.row');if(r&&(e.key==='Enter'||e.key===' ')){e.preventDefault();show(+r.dataset.i)}});
+S.forEach(s=>{const i=new Image();i.src=u(s.l,1100)});
+show(0);
+
+/* trio */
+let trio=[];
+const drawTrio=()=>{
+  $('slots').innerHTML=[0,1,2].map(k=>{const s=trio[k]!=null?S[trio[k]]:null;return s?`<button class="slot full" style="background:${s.c}" data-k="${k}" aria-label="Remove ${s.n}"></button>`:`<div class="slot">${k+1}</div>`}).join('');
+  const b=$('trioAdd');b.disabled=trio.length<3;b.textContent=trio.length<3?`Pick ${3-trio.length} more`:'Add trio to bag';
+};
+$('chips').innerHTML=S.map((s,i)=>`<button class="chip" data-i="${i}"><i style="background:${s.c}"></i>${s.n}</button>`).join('');
+$('chips').addEventListener('click',e=>{const b=e.target.closest('.chip');if(!b)return;if(trio.length>=3){note('Trio is full','Tap a circle to swap a shade',u(S[trio[0]].p,200));return}trio.push(+b.dataset.i);drawTrio()});
+$('slots').addEventListener('click',e=>{const b=e.target.closest('.slot.full');if(b){trio.splice(+b.dataset.k,1);drawTrio()}});
+$('trioAdd').addEventListener('click',()=>{if(trio.length<3)return;add(3,'Trio added — ₹999',trio.map(i=>S[i].n).join(' · '),u(S[trio[0]].p,200));trio=[];drawTrio()});
+drawTrio();
+
+/* reels — add a creator by adding one row: v = short preview file, p = video id, hd = HD file number, s = shade tagged, by = creator handle (optional) */
+const SH='https://cdn.shopify.com/s/files/1/0807/4677/4776/files/';
+const R=[
+  {v:'reelUp_x835cedi7s1777361856174_short.mp4',p:'e55d4eb74e734ce098d5f32e588e6cba',hd:'82844859',s:'Shocking Pink',by:''},
+  {v:'reelUp_qk055wvm2r1779668392039_short.mp4',p:'bee3068c50854aa0b6f4fb3a0067f5bc',hd:'84852369',s:'Pink Whisper',by:''},
+  {v:'reelUp_uj4juvfjmvb1779668392038_short.mp4',p:'1673de170a4a46c8b2a9a242e560d50f',hd:'84852368',s:'Nude Eclipse',by:''},
+  {v:'reelUp_kwjpog5re51779668269196_short.mp4',p:'a68ad3e129b645d7ac6310cf379b327c',hd:'84852288',s:'Bronze Flame',by:''},
+  {v:'reelUp_an1k12t48y1779668269192_short.mp4',p:'378d853df0fc442b87bfa28858651d37',hd:'84852287',s:'Miss Mauve',by:''}
+];
+const sh=n=>S.find(x=>x.n===n)||S[0];
+const vsrc=r=>SH+r.v;const fsrc=r=>r.hd?`https://cdn.shopify.com/videos/c/vp/${r.p}/${r.p}.HD-720p-1.6Mbps-${r.hd}.mp4`:vsrc(r);const psrc=r=>SH+'preview_images/'+r.p+'.thumbnail.0000000000_600x.jpg';
+let rf='all',list=R;
+const drawFilt=()=>{
+  const used=[...new Set(R.map(r=>r.s))];
+  $('filt').innerHTML=`<button class="all" data-s="all" aria-pressed="${rf==='all'}">All <span>${R.length}</span></button>`+used.map(n=>`<button data-s="${n}" aria-pressed="${rf===n}"><i style="background:${sh(n).c}"></i>${n} <span>${R.filter(r=>r.s===n).length}</span></button>`).join('');
+  $('rCount').textContent=`${R.length} reels · real girls, real lips, unfiltered`;
+};
+const drawReels=()=>{
+  list=rf==='all'?R:R.filter(r=>r.s===rf);
+  $('reelRail').innerHTML=list.map((r,i)=>{const s=sh(r.s);return `
+  <article class="reel" data-i="${i}">
+    <img class="po" src="${psrc(r)}" alt="Reel featuring ${r.s}" draggable="false" loading="lazy">
+    <video muted loop playsinline preload="none" data-src="${vsrc(r)}"></video>
+    <span class="by">${r.by}</span>
+    <span class="pl"><svg viewBox="0 0 12 12" fill="currentColor"><path d="M3 1.5v9l7.5-4.5z"/></svg></span>
+    <div class="prod"><img src="${u(s.p,120)}" alt=""><div><b>${s.n}</b><small>₹520<s>₹650</s></small></div><button class="radd" aria-label="Add ${s.n} to bag">+</button></div>
+  </article>`}).join('');
+  $('reelRail').scrollLeft=0;watch();
+};
+/* play only the reels on screen, muted; pause the rest */
+let rio;
+const watch=()=>{rio&&rio.disconnect();rio=new IntersectionObserver(es=>es.forEach(en=>{const c=en.target,v=c.querySelector('video');if(en.intersectionRatio>.6){if(!v.src)v.src=v.dataset.src;v.play().then(()=>c.classList.add('playing')).catch(()=>{})}else{v.pause();c.classList.remove('playing')}}),{threshold:[0,.6,1]});document.querySelectorAll('.reel').forEach(c=>rio.observe(c))};
+$('filt').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;rf=b.dataset.s;drawFilt();drawReels()});
+$('reelRail').addEventListener('click',e=>{const add=e.target.closest('.radd');const c=e.target.closest('.reel');if(!c)return;const r=list[+c.dataset.i];if(add){const s=sh(r.s);add&&addBag(s);return}openV(+c.dataset.i)});
+const addBag=s=>add(1,s.n,'Added to bag · ₹520',u(s.p,200));
+drawFilt();drawReels();
+dragify($('reelRail'),$('reelBar'));
+const step=d=>{const el=$('reelRail');const f=el.querySelector('.reel');if(!f)return;el.scrollBy({left:d*(f.offsetWidth+12)*2,behavior:'smooth'})};
+$('uL').onclick=()=>step(-1);$('uR').onclick=()=>step(1);
+
+/* full-screen story viewer */
+let vi=0,muted=true;const vv=$('vVid');
+const openV=i=>{vi=i;$('vw').classList.add('on');document.body.style.overflow='hidden';document.querySelectorAll('.reel video').forEach(v=>v.pause());loadV()};
+const closeV=()=>{$('vw').classList.remove('on');document.body.style.overflow='';vv.pause();vv.removeAttribute('src');vv.load()};
+const loadV=()=>{const r=list[vi],s=sh(r.s);
+  $('vBars').innerHTML=list.map((_,j)=>`<i class="${j<vi?'done':''}"><b></b></i>`).join('');
+  vv.src=fsrc(r);vv.poster=psrc(r);vv.muted=muted;vv.play().catch(()=>{});
+  $('vBy').textContent=r.by;$('vImg').src=u(s.p,160);$('vName').textContent=s.n;$('vTone').textContent=s.t+' · ₹520';
+};
+const go=d=>{const n=vi+d;if(n<0)return;if(n>=list.length){closeV();return}vi=n;loadV()};
+vv.addEventListener('timeupdate',()=>{const b=$('vBars').children[vi]?.firstChild;if(b&&vv.duration)b.style.width=(vv.currentTime/vv.duration*100)+'%'});
+vv.addEventListener('ended',()=>go(1));
+$('vPrev').onclick=$('vTapL').onclick=()=>go(-1);$('vNext').onclick=$('vTapR').onclick=()=>go(1);
+$('vClose').onclick=closeV;
+$('vw').addEventListener('click',e=>{if(e.target.id==='vw')closeV()});
+$('vMute').onclick=()=>{muted=!muted;vv.muted=muted;$('vMuteX').style.display=muted?'':'none';$('vMute').setAttribute('aria-label',muted?'Unmute':'Mute')};
+$('vAdd').onclick=()=>addBag(sh(list[vi].s));
+addEventListener('keydown',e=>{if(!$('vw').classList.contains('on'))return;if(e.key==='Escape')closeV();if(e.key==='ArrowRight')go(1);if(e.key==='ArrowLeft')go(-1)});
+let ty=0;$('vw').addEventListener('touchstart',e=>{ty=e.touches[0].clientY},{passive:true});
+$('vw').addEventListener('touchend',e=>{const d=e.changedTouches[0].clientY-ty;if(d>90)closeV();else if(d<-60)go(1)});
+
+/* faq */
+const faq=[
+  ['Is it drying?','Not at all. It’s a soft matte — lightweight, comfy and non-crusty all day.'],
+  ['How long does it last?','Through coffee dates, office hours, weddings and random life drama. Expect long-lasting wear with minimal touch-ups.'],
+  ['Is it transfer-proof?','Mostly, yes. It stays put really well, though oily food can test the formula.'],
+  ['Is it waterproof?','Yes — sweat, humidity and hot-girl summers approved.'],
+  ['Can I return or exchange?','For hygiene reasons, opened beauty products can’t be returned. If your order arrives damaged or incorrect, we’ll fix it as soon as possible.']
+];
+$('faq').innerHTML=faq.map((q,i)=>`<details${i?'':' open'}><summary>${q[0]}<span>+</span></summary><p>${q[1]}</p></details>`).join('');
+
+/* newsletter */
+$('news').addEventListener('submit',e=>{e.preventDefault();$('ok').textContent='You’re in — your 3 for ₹999 code is on its way.';$('email').value=''});
+
+/* mini header + reveal */
+const hero=$('hero'),mini=$('mini');
+new IntersectionObserver(([en])=>mini.classList.toggle('on',!en.isIntersecting),{threshold:0}).observe(hero);
+const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}}),{threshold:.15});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+}
+</script>
+</body>
+</html>
