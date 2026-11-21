@@ -136,6 +136,11 @@ $('vw').addEventListener('touchend', e => { const d = e.changedTouches[0].client
     });
     bs.forEach((b, j) => { b.firstElementChild.style.width = j < cur ? '100%' : '0'; b.setAttribute('aria-current', j === cur); });
     count.textContent = `${String(cur + 1).padStart(2, '0')} / ${String(slides.length).padStart(2, '0')}`;
+    /* reels in the active slide play muted on loop; others pause (videos load only when first shown) */
+    slides.forEach((s, j) => s.querySelectorAll('video[data-src]').forEach(v => {
+      if (j === cur) { if (!v.src) { v.src = v.dataset.src; v.addEventListener('playing', () => v.classList.add('on'), { once: true }); } v.play().catch(() => {}); }
+      else v.pause();
+    }));
     t0 = performance.now();
   };
   bs.forEach((b, i) => b.onclick = () => go(i));

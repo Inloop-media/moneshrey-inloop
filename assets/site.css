@@ -977,6 +977,8 @@ body{font-weight:400;color:#3a2e30}
 .j-top span:last-child{color:var(--mute)}
 .j-reel{position:relative;border-radius:var(--r);overflow:hidden;min-height:0;display:block}
 .j-reel img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+.j-reel video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .5s}
+.j-reel video.on{opacity:1}
 .j-reel:hover img{transform:scale(1.04)}
 .j-reel i{position:absolute;top:10px;right:10px;width:30px;height:30px;border-radius:50%;background:rgba(0,0,0,.35);color:#fff;display:grid;place-items:center;font:normal 10px var(--ui)}
 .j-reel span{position:absolute;left:8px;right:8px;bottom:8px;background:#fff;border-radius:4px;padding:8px 10px;display:flex;justify-content:space-between;font:400 13px var(--ui);color:var(--ox)}
