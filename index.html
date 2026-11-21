@@ -20,24 +20,24 @@
 <link rel="preload" as="image" fetchpriority="high"
   imagesrcset="https://moneshrey.in/cdn/shop/files/Matte_that_survives_chai_chaos_bad_decisions._1.png?width=800 800w, https://moneshrey.in/cdn/shop/files/Matte_that_survives_chai_chaos_bad_decisions._1.png?width=1200 1200w, https://moneshrey.in/cdn/shop/files/Matte_that_survives_chai_chaos_bad_decisions._1.png?width=1600 1600w, https://moneshrey.in/cdn/shop/files/Matte_that_survives_chai_chaos_bad_decisions._1.png?width=2200 2200w"
   imagesizes="(max-width:900px) 100vw, 46vw">
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..600;1,6..96,400..600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 /*
 VOICE   quiet confidence, with Monèshrey's cheek kept in the copy
 IDEA    a vanity of rounded trays: every section sits in its own inset panel
 PICTURE campaign photography, big and cropped; a sticky lip try-on that changes per shade
 COLOUR  cream #FFFAF7 page, blush #FFDEF1 + warm sand #F4ECE7 panels, oxblood #761E0B ink
-TYPE    Bodoni Moda (high-contrast serif, italic accents) for headings, Inter for UI and copy
+TYPE    Cormorant Garamond (fine luxury serif, italic accents) for headings, Jost (geometric, fashion-house sans) for UI and copy
 */
 :root{
   --cream:#FFFAF7; --sand:#F4ECE7; --blush:#FFDEF1; --ox:#761E0B; --ox-d:#4E1407;
   --ink:#3A2A26; --mute:#7E6964; --line:rgba(118,30,11,.14);
-  --disp:"Bodoni Moda",Didot,"Bodoni 72",Georgia,serif; --ui:"Inter",Helvetica,Arial,sans-serif; --body:"Inter",Helvetica,Arial,sans-serif;
+  --disp:"Cormorant Garamond","Cormorant",Garamond,Georgia,serif; --ui:"Jost","Futura","Century Gothic",Helvetica,Arial,sans-serif; --body:"Jost","Futura","Century Gothic",Helvetica,Arial,sans-serif;
   --g:clamp(8px,1.1vw,14px); --r:14px; --ease:cubic-bezier(.2,.7,.2,1);
 }
 *{box-sizing:border-box;min-width:0}
 html{scroll-behavior:smooth;scroll-padding-top:80px}
-body{margin:0;background:var(--cream);color:var(--ink);font:15px/1.65 var(--body);overflow-x:clip;-webkit-font-smoothing:antialiased}
+body{margin:0;background:var(--cream);color:var(--ink);font:300 15.5px/1.7 var(--body);overflow-x:clip;-webkit-font-smoothing:antialiased}
 img{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
 button{font:inherit;color:inherit;cursor:pointer;background:none;border:0;padding:0}
@@ -46,7 +46,9 @@ button{font:inherit;color:inherit;cursor:pointer;background:none;border:0;paddin
 .panel{border-radius:var(--r);overflow:hidden;position:relative}
 .ui{font:500 11.5px/1.35 var(--ui);text-transform:uppercase;letter-spacing:.14em}
 .eyebrow{color:var(--ox)}
-.disp{font-family:var(--disp);font-optical-sizing:auto;font-weight:500;letter-spacing:-.015em;line-height:1.02;color:var(--ox);margin:0}
+.disp{font-family:var(--disp);font-weight:500;letter-spacing:-.01em;line-height:1;color:var(--ox);margin:0}
+/* Cormorant has a small x-height: scale every serif element up to match the old optical size */
+.disp,.hero-txt h1,.row .nm,.try .lipcol .cap .n,.sum b,.specs dd,.story p:first-of-type::first-letter,.story .sig,.q blockquote,.reel .prod b,.vw .card b,.vals .lead,.dr-nav a,.it b,.tot b{font-size-adjust:ex-height .44}
 .disp em{font-style:italic;font-weight:400}
 .pill{display:inline-flex;align-items:center;justify-content:center;height:44px;padding:0 26px;border-radius:40px;border:1px solid currentColor;font:500 11.5px/1 var(--ui);text-transform:uppercase;letter-spacing:.14em;transition:background .4s,color .4s,border-color .4s;white-space:nowrap}
 .pill:hover{background:var(--ox);border-color:var(--ox);color:var(--cream)}
@@ -83,7 +85,7 @@ button{font:inherit;color:inherit;cursor:pointer;background:none;border:0;paddin
 .nav .menu{display:none}
 .hero-txt{position:absolute;z-index:4;left:calc(53.5% + clamp(18px,2.4vw,34px));bottom:clamp(24px,3.4vw,48px);right:clamp(18px,2.4vw,34px);color:#fff}
 .hero-txt .k{margin:0 0 14px;opacity:.9}
-.hero-txt h1{font-family:var(--disp);font-optical-sizing:auto;font-weight:400;font-size:clamp(30px,3.3vw,56px);line-height:1.04;letter-spacing:-.02em;margin:0 0 14px;max-width:620px}
+.hero-txt h1{font-family:var(--disp);font-weight:500;font-size:clamp(30px,3.3vw,56px);line-height:1.04;letter-spacing:-.02em;margin:0 0 14px;max-width:620px}
 .hero-txt h1 em{font-style:italic}
 .hero-txt .sub{margin:0 0 24px;font-size:14px;opacity:.88;max-width:520px}
 .hero-txt .ctas{display:flex;gap:10px;flex-wrap:wrap}
@@ -109,8 +111,8 @@ button{font:inherit;color:inherit;cursor:pointer;background:none;border:0;paddin
 .pc .tag{flex:none;font:500 10px/1 var(--ui);text-transform:uppercase;letter-spacing:.14em;border:1px solid var(--line);color:var(--ox);border-radius:20px;padding:7px 10px}
 .pc .stage{flex:1;position:relative;margin:12px 0 14px;min-height:200px;border-radius:10px;overflow:hidden;isolation:isolate;background:var(--cream)}
 .pc .stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply;transition:opacity .7s,transform 1.1s var(--ease);pointer-events:none}
-.pc .stage img.lip{object-fit:cover;object-position:50% 35%;mix-blend-mode:normal;opacity:0;transform:scale(1.42);transform-origin:50% 35%}
-.pc:hover .stage img.lip{opacity:1;transform:scale(1.32)}
+.pc .stage img.lip{object-fit:cover;object-position:50% 45%;mix-blend-mode:normal;opacity:0;transform:scale(1.18);transform-origin:50% 45%}
+.pc:hover .stage img.lip{opacity:1;transform:scale(1.1)}
 .pc:hover .stage img:not(.lip){opacity:0}
 .pc .bot{display:flex;justify-content:space-between;align-items:end;gap:10px;transition:opacity .4s}
 .pc .bot b{display:block;font:500 11px/1.3 var(--ui);text-transform:uppercase;letter-spacing:.14em;color:var(--ox)}
@@ -139,7 +141,7 @@ button{font:inherit;color:inherit;cursor:pointer;background:none;border:0;paddin
 /* try-on */
 .try{display:grid;grid-template-columns:1fr 1fr;gap:var(--g);align-items:start}
 .try .lipcol{position:sticky;top:var(--g);height:calc(100vh - var(--g)*2);max-height:860px;border-radius:var(--r);overflow:hidden;background:#cfa996}
-.try .lipcol img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 38%;transform:scale(1.25);transform-origin:50% 38%;transition:opacity .7s}
+.try .lipcol img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 45%;transform:scale(1.04);transform-origin:50% 45%;transition:opacity .7s}
 .try .lipcol .cap{position:absolute;left:22px;bottom:22px;right:22px;display:flex;justify-content:space-between;align-items:end;gap:12px;color:#fff;z-index:2}
 .try .lipcol .cap .n{font-family:var(--disp);font-style:italic;font-weight:400;font-size:clamp(36px,3.8vw,60px);line-height:.95;letter-spacing:-.02em}
 .try .lipcol .cap .e{display:block;margin-top:8px;opacity:.85}
@@ -681,20 +683,21 @@ const DELIVERY_DAYS=5;   // typical delivery time, used for the "Delivery by" da
 
 const B='https://moneshrey.in/cdn/shop/files/';
 const u=(f,w)=>B+f+'?width='+w;
+const lip=(s,w)=>`images/lips/${s.lp}-${w}.webp`;  // retouched on-lip photos (900 / 1600 px)
 const ss=(f,ws)=>ws.map(w=>`${u(f,w)} ${w}w`).join(', ');
 const $=id=>document.getElementById(id);
 const pic=(id,f,sizes,ws=[600,900,1300,1800,2400])=>{const i=$(id);i.sizes=sizes;i.srcset=ss(f,ws);i.src=u(f,ws[2])};
 const wa=t=>WA_NUMBER?`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(t)}`:'https://moneshrey.in/pages/contact-us';
-/* one name per shade: the Hindi name leads, the English store name sits underneath */
+/* one name per shade (English store names). lp = retouched on-lip photo in images/lips/ */
 const S=[
-  {n:'Gulaal',e:'Nude Eclipse',c:'#9A5A5E',t:'Mauve nude',tag:'Bestseller',p:'Gulaal02_2.jpg',l:'GulaalPost_jpg.jpg'},
-  {n:'Begum',e:'Pink Whisper',c:'#B44E3C',t:'Warm coral rose',p:'Begum_001_1.jpg',l:'BegumPost_jpg.jpg'},
-  {n:'Kohinoor',e:'Bronze Flame',c:'#7C3A2E',t:'Deep bronze brown',p:'Kohinoor01.jpg',l:'KohinoorPost_jpg.jpg'},
-  {n:'Noor',e:'Brown Theory',c:'#95503A',t:'Terracotta brown',p:'Noor.jpg',l:'NoorPost_jpg.jpg'},
-  {n:'Mauv-e-Mehfil',e:'Miss Mauve',c:'#8C5B57',t:'Smoky mauve',p:'Mauv-E-Mehfil01_f8ea878e-600b-4dea-8051-3652fa8e121b.jpg',l:'Mauv-E-MehfilPost_jpg.jpg'},
-  {n:'Meher',e:'Dusky Petal',c:'#C14F40',t:'Rosy red',p:'Meher01.jpg',l:'MeherPost_jpg.jpg'},
-  {n:'Saanjh',e:'Chocolate Obsessed',c:'#8A2F27',t:'Brick chocolate',p:'Sanjh01.jpg',l:'SaanjhPost_jpg.jpg'},
-  {n:'Pink Patakha',e:'Shocking Pink',c:'#B4405A',t:'Berry pink',p:'PinkPatakha01_80a5a12f-127f-4a59-8359-d8fbb74e505b.jpg',l:'PinkPatakhaPost_jpg.jpg'}
+  {n:'Nude Eclipse',lp:'nude-eclipse',c:'#9A5A5E',t:'Mauve nude',tag:'Bestseller',p:'Gulaal02_2.jpg',l:'GulaalPost_jpg.jpg'},
+  {n:'Pink Whisper',lp:'pink-whisper',c:'#B44E3C',t:'Warm coral rose',p:'Begum_001_1.jpg',l:'BegumPost_jpg.jpg'},
+  {n:'Bronze Flame',lp:'bronze-flame',c:'#7C3A2E',t:'Deep bronze brown',p:'Kohinoor01.jpg',l:'KohinoorPost_jpg.jpg'},
+  {n:'Brown Theory',lp:'brown-theory',c:'#95503A',t:'Terracotta brown',p:'Noor.jpg',l:'NoorPost_jpg.jpg'},
+  {n:'Miss Mauve',lp:'miss-mauve',c:'#8C5B57',t:'Smoky mauve',p:'Mauv-E-Mehfil01_f8ea878e-600b-4dea-8051-3652fa8e121b.jpg',l:'Mauv-E-MehfilPost_jpg.jpg'},
+  {n:'Dusky Petal',lp:'dusky-petal',c:'#C14F40',t:'Rosy red',p:'Meher01.jpg',l:'MeherPost_jpg.jpg'},
+  {n:'Chocolate Obsessed',lp:'chocolate-obsessed',c:'#8A2F27',t:'Brick chocolate',p:'Sanjh01.jpg',l:'SaanjhPost_jpg.jpg'},
+  {n:'Shocking Pink',lp:'shocking-pink',c:'#B4405A',t:'Berry pink',p:'PinkPatakha01_80a5a12f-127f-4a59-8359-d8fbb74e505b.jpg',l:'PinkPatakhaPost_jpg.jpg'}
 ];
 const LOGO='Untitled_design_8_1c9aa3f1-eaa7-41b4-b663-16e691669947.png';
 $('logo1').src=$('logo2').src=$('logo4').src=u(LOGO,500);$('logo3').src=u(LOGO,2400);
@@ -751,15 +754,15 @@ const drawBag=()=>{
 $('bagItems').addEventListener('click',e=>{const b=e.target.closest('[data-k]');if(!b)return;const it=bag.find(x=>x.k===b.dataset.k);if(!it)return;
   if(b.classList.contains('rm'))it.qty=0;else it.qty+=+b.dataset.d;bag=bag.filter(x=>x.qty>0);drawBag()});
 const addItem=it=>{const f=bag.find(b=>b.k===it.k);f?f.qty++:bag.push({...it,qty:1});drawBag();bagD.open()};
-const addShade=i=>{const s=S[i];addItem({k:'s'+i,n:s.n,sub:`${s.e} · ${s.t}`,img:u(s.p,200),price:520,mrp:650})};
+const addShade=i=>{const s=S[i];addItem({k:'s'+i,n:s.n,sub:s.t,img:u(s.p,200),price:520,mrp:650})};
 drawBag();
 
 /* product grid: all 8 shades */
 const card=(s,i)=>`
 <article class="pc">
   <div class="top"><h3 class="disp nm">${s.n}</h3>${s.tag?`<span class="tag">${s.tag}</span>`:''}</div>
-  <div class="stage"><img src="${u(s.p,700)}" srcset="${ss(s.p,[400,700,1000])}" sizes="(max-width:600px) 250px, (max-width:900px) 45vw, 24vw" alt="${s.n} (${s.e}) liquid matte lipstick" draggable="false" loading="lazy"><img class="lip" src="${u(s.l,700)}" alt="" draggable="false" loading="lazy"></div>
-  <div class="bot"><div><b>${s.e}</b><small>${s.t}</small></div><div class="pr">₹520<s>₹650</s></div></div>
+  <div class="stage"><img src="${u(s.p,700)}" srcset="${ss(s.p,[400,700,1000])}" sizes="(max-width:600px) 250px, (max-width:900px) 45vw, 24vw" alt="${s.n} liquid matte lipstick" draggable="false" loading="lazy"><img class="lip" src="${lip(s,900)}" srcset="${lip(s,900)} 900w, ${lip(s,1600)} 1600w" sizes="(max-width:900px) 70vw, 30vw" alt="" draggable="false" loading="lazy"></div>
+  <div class="bot"><div><b>${s.t}</b><small>Liquid matte</small></div><div class="pr">₹520<s>₹650</s></div></div>
   <button class="qa" data-i="${i}">Add to bag — ₹520</button>
 </article>`;
 $('rail').innerHTML=S.map(card).join('');
@@ -779,21 +782,21 @@ dragify($('rail'),$('railBar'));
 
 /* try-on list */
 let cur=-1,front='lipA';
-const lipW=()=>{const w=$('lipcol').clientWidth*Math.min(2,devicePixelRatio||1)*1.25;return w<=700?700:w<=1100?1100:1600};
+const lipW=()=>$('lipcol').clientWidth*Math.min(2,devicePixelRatio||1)>900?1600:900;
 const show=i=>{
   if(i===cur)return;cur=i;const s=S[i];
   const back=front==='lipA'?'lipB':'lipA',im=$(back);
   const swap=()=>{im.onload=null;if(cur!==i)return;im.style.opacity=1;$(front).style.opacity=0;front=back};
   im.onload=swap;
-  im.src=u(s.l,lipW());im.alt=s.n+' on lips';if(im.complete&&im.naturalWidth)swap();
-  $('capN').textContent=s.n;$('capE').textContent=s.e;$('capC').textContent=(i+1)+' / '+S.length;
-  $('waTry').href=wa(`Hi Monèshrey! Would ${s.n} (${s.e}) suit my skin tone?`);
+  im.src=lip(s,lipW());im.alt=s.n+' on lips';if(im.complete&&im.naturalWidth)swap();
+  $('capN').textContent=s.n;$('capE').textContent=s.t;$('capC').textContent=(i+1)+' / '+S.length;
+  $('waTry').href=wa(`Hi Monèshrey! Would ${s.n} suit my skin tone?`);
   document.querySelectorAll('.row').forEach((r,j)=>r.classList.toggle('act',j===i));
 };
 $('rows').innerHTML=S.map((s,i)=>`
 <div class="row" data-i="${i}" tabindex="0" role="button" aria-label="Show ${s.n}">
   <div class="th"><img src="${u(s.p,240)}" alt="" loading="lazy"></div>
-  <div><div class="nm"><i style="background:${s.c}"></i>${s.n}</div><small>${s.e} · ${s.t}</small></div>
+  <div><div class="nm"><i style="background:${s.c}"></i>${s.n}</div><small>${s.t}</small></div>
   <div class="r"><span class="p">₹520<s>₹650</s></span><button class="pill add" data-i="${i}">Add</button></div>
 </div>`).join('');
 const rows=$('rows');
@@ -802,7 +805,7 @@ rows.addEventListener('click',e=>{const b=e.target.closest('.add');if(b){addShad
 rows.addEventListener('keydown',e=>{const r=e.target.closest('.row');if(r&&(e.key==='Enter'||e.key===' ')){e.preventDefault();show(+r.dataset.i)}});
 show(0);
 /* warm the other try-on photos once the section is close */
-new IntersectionObserver(([en],o)=>{if(en.isIntersecting){const w=lipW();S.forEach(s=>{const i=new Image();i.src=u(s.l,w)});o.disconnect()}},{rootMargin:'600px'}).observe($('try'));
+new IntersectionObserver(([en],o)=>{if(en.isIntersecting){const w=lipW();S.forEach(s=>{const i=new Image();i.src=lip(s,w)});o.disconnect()}},{rootMargin:'600px'}).observe($('try'));
 
 /* trio */
 let trio=[];
@@ -818,24 +821,24 @@ drawTrio();
 
 /* reviews — DEMO: sample quotes; replace with Judge.me reviews (the app is already installed on the store) */
 const REV=[
-  {q:'Finally a nude that doesn’t make me look washed out. Wore it through a full shaadi day.',s:'Gulaal'},
-  {q:'Survived chai, lunch and a forty-minute metro ride. Barely needed a touch-up.',s:'Kohinoor'},
-  {q:'Matte without the cracked-lip feeling. I forget I’m wearing it.',s:'Mauv-e-Mehfil'}
+  {q:'Finally a nude that doesn’t make me look washed out. Wore it through a full shaadi day.',s:'Nude Eclipse'},
+  {q:'Survived chai, lunch and a forty-minute metro ride. Barely needed a touch-up.',s:'Bronze Flame'},
+  {q:'Matte without the cracked-lip feeling. I forget I’m wearing it.',s:'Miss Mauve'}
 ];
 const byName=n=>S.find(x=>x.n===n)||S[0];
 $('qs').innerHTML=REV.map(r=>{const s=byName(r.s);return `<figure class="q"><span class="st" aria-label="5 out of 5 stars">★★★★★</span><blockquote>“${r.q}”</blockquote><figcaption class="ui"><i style="background:${s.c}"></i>Verified buyer · ${s.n}</figcaption></figure>`}).join('');
 
 /* reels — the 7 real creator reels from the store. Add a creator by adding one row:
-   v = short preview file, p = video id, hd = HD file number, s = shade (Hindi name), by = creator handle (optional) */
+   v = short preview file, p = video id, hd = HD file number, s = shade name, by = creator handle (optional) */
 const SH='https://cdn.shopify.com/s/files/1/0807/4677/4776/files/';
 const R=[
-  {v:'reelUp_x835cedi7s1777361856174_short.mp4',p:'e55d4eb74e734ce098d5f32e588e6cba',hd:'82844859',s:'Pink Patakha',by:''},
-  {v:'reelUp_qk055wvm2r1779668392039_short.mp4',p:'bee3068c50854aa0b6f4fb3a0067f5bc',hd:'84852369',s:'Begum',by:''},
-  {v:'reelUp_uj4juvfjmvb1779668392038_short.mp4',p:'1673de170a4a46c8b2a9a242e560d50f',hd:'84852368',s:'Gulaal',by:''},
-  {v:'reelUp_kwjpog5re51779668269196_short.mp4',p:'a68ad3e129b645d7ac6310cf379b327c',hd:'84852288',s:'Kohinoor',by:''},
-  {v:'reelUp_an1k12t48y1779668269192_short.mp4',p:'378d853df0fc442b87bfa28858651d37',hd:'84852287',s:'Mauv-e-Mehfil',by:''},
-  {v:'reelUp_qjf6wzo6zfr1779668269196_short.mp4',p:'1ba620cfd3bf4937acce9eb7a19b967b',hd:'84852290',s:'Noor',by:''},
-  {v:'reelUp_3rvaxth03491779668269193_short.mp4',p:'d4666e3edd494f6c9dca4b5b2b234d00',hd:'84852291',s:'Meher',by:''}
+  {v:'reelUp_x835cedi7s1777361856174_short.mp4',p:'e55d4eb74e734ce098d5f32e588e6cba',hd:'82844859',s:'Shocking Pink',by:''},
+  {v:'reelUp_qk055wvm2r1779668392039_short.mp4',p:'bee3068c50854aa0b6f4fb3a0067f5bc',hd:'84852369',s:'Pink Whisper',by:''},
+  {v:'reelUp_uj4juvfjmvb1779668392038_short.mp4',p:'1673de170a4a46c8b2a9a242e560d50f',hd:'84852368',s:'Nude Eclipse',by:''},
+  {v:'reelUp_kwjpog5re51779668269196_short.mp4',p:'a68ad3e129b645d7ac6310cf379b327c',hd:'84852288',s:'Bronze Flame',by:''},
+  {v:'reelUp_an1k12t48y1779668269192_short.mp4',p:'378d853df0fc442b87bfa28858651d37',hd:'84852287',s:'Miss Mauve',by:''},
+  {v:'reelUp_qjf6wzo6zfr1779668269196_short.mp4',p:'1ba620cfd3bf4937acce9eb7a19b967b',hd:'84852290',s:'Brown Theory',by:''},
+  {v:'reelUp_3rvaxth03491779668269193_short.mp4',p:'d4666e3edd494f6c9dca4b5b2b234d00',hd:'84852291',s:'Dusky Petal',by:''}
 ];
 const vsrc=r=>SH+r.v;const fsrc=r=>r.hd?`https://cdn.shopify.com/videos/c/vp/${r.p}/${r.p}.HD-720p-1.6Mbps-${r.hd}.mp4`:vsrc(r);const psrc=r=>SH+'preview_images/'+r.p+'.thumbnail.0000000000_600x.jpg';
 $('reelRail').innerHTML=R.map((r,i)=>{const s=byName(r.s);return `
@@ -861,7 +864,7 @@ const closeV=()=>{$('vw').classList.remove('on');document.body.style.overflow=''
 const loadV=()=>{const r=R[vi],s=byName(r.s);
   $('vBars').innerHTML=R.map((_,j)=>`<i class="${j<vi?'done':''}"><b></b></i>`).join('');
   vv.src=fsrc(r);vv.poster=psrc(r);vv.muted=muted;vv.play().catch(()=>{});
-  $('vBy').textContent=r.by;$('vImg').src=u(s.p,160);$('vName').textContent=s.n;$('vTone').textContent=s.e+' · ₹520';
+  $('vBy').textContent=r.by;$('vImg').src=u(s.p,160);$('vName').textContent=s.n;$('vTone').textContent=s.t+' · ₹520';
 };
 const go=d=>{const n=vi+d;if(n<0)return;if(n>=R.length){closeV();return}vi=n;loadV()};
 vv.addEventListener('timeupdate',()=>{const b=$('vBars').children[vi]?.firstChild;if(b&&vv.duration)b.style.width=(vv.currentTime/vv.duration*100)+'%'});
