@@ -1000,3 +1000,6 @@ body{font-weight:400;color:#3a2e30}
   .j-main::after{background:linear-gradient(0deg,rgba(30,10,12,.65),rgba(30,10,12,0) 65%)}
 }
 @media (prefers-reduced-motion:reduce){.slide,.slide>*{transition:none!important}}
+
+/* trio band: content side on white like the rest of the page */
+#trio .txt{background:#fff}
