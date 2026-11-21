@@ -12,7 +12,8 @@ pic($('s4img'), 'noughts-crosses', '(max-width:600px) 100vw, (max-width:900px) 5
 new IntersectionObserver(([en]) => $('mini').classList.toggle('on', !en.isIntersecting), { threshold: 0 }).observe($('hero'));
 
 /* product grid */
-$('rail').innerHTML = S.map(card).join('');
+$('rail').innerHTML = S.slice(0, 4).map((s, i) => card(s, i)).join('');
+$('rail2').innerHTML = S.slice(4).map((s, i) => card(s, i + 4)).join('');
 
 /* drag-to-scroll + progress bar for swipe rails */
 const dragify = (el, bar) => {
@@ -25,6 +26,7 @@ const dragify = (el, bar) => {
   el.addEventListener('scroll', upd, { passive: true }); addEventListener('resize', upd); upd();
 };
 dragify($('rail'), $('railBar'));
+dragify($('rail2'), $('railBar2'));
 
 /* try-on list */
 let cur = -1, front = 'lipA';
